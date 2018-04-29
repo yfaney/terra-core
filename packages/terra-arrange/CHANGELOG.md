@@ -4,6 +4,11 @@ Changelog
 Unreleased
 ----------
 
+2.8.0
+------------------
+### Changed
+* Add prop options enumeration
+
 2.7.0 - (April 20, 2018)
 ------------------
 ### Changed

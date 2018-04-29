@@ -4,7 +4,12 @@ import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
 import styles from './Arrange.scss';
 
-const alignmentTypes = ['center', 'bottom', 'stretch'];
+const ArrangeAlignmentTypes = {
+  CENTER: 'center',
+  BOTTOM: 'bottom',
+  STRETCH: 'stretch',
+};
+
 const cx = classNames.bind(styles);
 
 const propTypes = {
@@ -21,21 +26,21 @@ const propTypes = {
    */
   fitEnd: PropTypes.element,
   /**
-   * The vertical orientation of all three containers. It will override the aligment of alignFitStart, alignFill and alignFitEnd if given. One of: `center`, `bottom`, `stretch`.
+   * The vertical orientation of all three containers. It will override the alignment of alignFitStart, alignFill and alignFitEnd if given. One of: `center`, `bottom`, `stretch`.
    */
-  align: PropTypes.oneOf(alignmentTypes),
+  align: PropTypes.oneOf(Object.values(ArrangeAlignmentTypes)),
   /**
-   * The vertical orientation of fitStart. One of: `center`, `bottom`, `stretch`.
+   * The vertical orientation of fitStart. One of: `Arrange.Opts.AlignmentTypes.CENTER`, `Arrange.Opts.AlignmentTypes.BOTTOM`, `Arrange.Opts.AlignmentTypes.STRETCH`.
    */
-  alignFitStart: PropTypes.oneOf(alignmentTypes),
+  alignFitStart: PropTypes.oneOf(Object.values(ArrangeAlignmentTypes)),
   /**
-   * The vertical orientation of fill. One of: `center`, `bottom`, `stretch`.
+   * The vertical orientation of fill. One of: `Arrange.Opts.AlignmentTypes.CENTER`, `Arrange.Opts.AlignmentTypes.BOTTOM`, `Arrange.Opts.AlignmentTypes.STRETCH`.
    */
-  alignFitEnd: PropTypes.oneOf(alignmentTypes),
+  alignFitEnd: PropTypes.oneOf(Object.values(ArrangeAlignmentTypes)),
   /**
-   * The vertical orientation of fitEnd. One of: `center`, `bottom`, `stretch`.
+   * The vertical orientation of fitEnd. One of: `Arrange.Opts.AlignmentTypes.CENTER`, `Arrange.Opts.AlignmentTypes.BOTTOM`, `Arrange.Opts.AlignmentTypes.STRETCH`.
    */
-  alignFill: PropTypes.oneOf(alignmentTypes),
+  alignFill: PropTypes.oneOf(Object.values(ArrangeAlignmentTypes)),
   /**
    * The attributes to be set on the fitStart wrapper element
    */
@@ -82,6 +87,11 @@ const Arrange = ({
   );
 };
 
+const opts = {
+  AlignmentTypes: ArrangeAlignmentTypes,
+};
+
 Arrange.propTypes = propTypes;
+Arrange.Opts = opts;
 
 export default Arrange;
