@@ -242,11 +242,13 @@ class Button extends React.Component {
   }
 }
 
+const opts = {
+  Types: ButtonTypes,
+  Variants: ButtonVariants,
+};
+
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
-
-Button.Opts = {};
-Button.Opts.Types = ButtonTypes;
-Button.Opts.Variants = ButtonVariants;
+Button.Opts = opts;
 
 export default Button;
