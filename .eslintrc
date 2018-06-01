@@ -1,4 +1,11 @@
 {
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  },
   "extends": "airbnb",
   "plugins": [
     "react",
@@ -12,6 +19,7 @@
   "rules": {
     "max-len": "off", // Remove warnings on max line length exceeding 100 characters
     "react/require-default-props": "off", // Disabled the requirement to default all non-required props
+    "import/no-extraneous-dependencies": ["error", { "packageDir": ["./", "./packages/**/"] }]
   },
     "globals": {
     "shallow": true,
