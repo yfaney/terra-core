@@ -10,6 +10,10 @@ const cx = classNames.bind(styles);
 
 const propTypes = {
   /**
+   * The children to be placed within the main content area of the dialog.
+   */
+  children: PropTypes.node,
+  /**
    * React node to be placed within the header area of the dialog.
    */
   header: PropTypes.node.isRequired,
@@ -19,19 +23,24 @@ const propTypes = {
    */
   footer: PropTypes.node.isRequired,
   /**
-   * The children to be placed within the main content area of the dialog.
+   * Whether or not additional footer styling needs to be applied. Used in conjunction with custom content.
    */
-  children: PropTypes.node,
+  isFooterStyled: PropTypes.bool,
   /**
    * Callback function for when the close button is clicked. The close button will not display if this is not set.
    * On small viewports a back button will be displayed instead of a close button.
    */
   onClose: PropTypes.func,
+  /**
+   * Ref callback for the scrollable area of the content container.
+   */
+  scrollRefCallback: PropTypes.func,
 };
 
 const defaultProps = {
   onClose: null,
   children: null,
+  isFooterStyled: false,
 };
 
 const contextTypes = {
@@ -43,7 +52,7 @@ const contextTypes = {
   },
 };
 
-const Dialog = ({ header, footer, onClose, children, ...customProps }, { intl }) => {
+const Dialog = ({ children, header, footer, isFooterStyled, onClose, scrollRefCallback, ...customProps }, { intl }) => {
   const dialogClassNames = cx([
     'dialog',
     customProps.className,
@@ -53,13 +62,19 @@ const Dialog = ({ header, footer, onClose, children, ...customProps }, { intl })
   const closeButton = onClose ? <div className={cx('dialog-header-close')}><Button variant="utility" text={closeText} onClick={onClose} isIconOnly icon={<span className={cx('close-icon')} />} /></div> : null;
 
   const dialogHeader = <div className={cx('dialog-header')}><div className={cx('dialog-header-title')}>{header}</div>{closeButton}</div>;
+  const dialogFooter = isFooterStyled ? <div className={cx('dialog-footer')}>{footer}</div> : footer;
 
   return (
-    <div {...customProps} className={dialogClassNames}>
-      <ContentContainer fill header={dialogHeader} footer={<div className={cx('dialog-footer')}>{footer}</div>}>
-        <div className={cx('dialog-body')}>{children}</div>
-      </ContentContainer>
-    </div>
+    <ContentContainer
+      {...customProps}
+      className={dialogClassNames}
+      header={dialogHeader}
+      footer={dialogFooter}
+      scrollRefCallback={scrollRefCallback}
+      fill
+    >
+      {children}
+    </ContentContainer>
   );
 };
 

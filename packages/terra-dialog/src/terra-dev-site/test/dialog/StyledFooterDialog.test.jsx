@@ -17,6 +17,7 @@ export default () => (
       id="dialog"
       header={header}
       footer={footer}
+      isFooterStyled
     >
       {body}
     </Dialog>

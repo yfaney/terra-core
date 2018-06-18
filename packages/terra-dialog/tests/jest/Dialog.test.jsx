@@ -3,7 +3,15 @@ import intlContexts from './intl-context-setup';
 import Dialog from '../../src/Dialog';
 
 describe('Dialog', () => {
-  const defaultRender = <Dialog header="Header Content" footer="Footer Content">some body content</Dialog>;
+  const defaultRender = (
+    <Dialog
+      header="Header Content"
+      footer="Footer Content"
+      scrollRefCallback={jest.fn()}
+    >
+      some body content
+    </Dialog>
+  );
 
   // Snapshot Test
   it('should render a default component', () => {
@@ -19,6 +27,16 @@ describe('Dialog', () => {
 
   it('should render a Dialog with merged attributes', () => {
     const wrapper = shallow(<Dialog header="Header Content" footer="Footer Content" className="TestClass">some body content</Dialog>, intlContexts.shallowContext);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render a Dialog with props - isStyledFooter', () => {
+    const wrapper = shallow(<Dialog header="Header Content" footer="Footer Content" isStyledFooter>some body content</Dialog>, intlContexts.shallowContext);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render a Dialog with props - onClose', () => {
+    const wrapper = shallow(<Dialog header="Header Content" footer="Footer Content" onClose={jest.fn()}>some body content</Dialog>, intlContexts.shallowContext);
     expect(wrapper).toMatchSnapshot();
   });
 });

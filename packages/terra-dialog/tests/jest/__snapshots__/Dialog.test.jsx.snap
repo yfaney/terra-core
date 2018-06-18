@@ -1,69 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dialog should render a Dialog with merged attributes 1`] = `
-<div
+<ContentContainer
   className="dialog TestClass"
->
-  <ContentContainer
-    fill={true}
-    footer={
-      <div
-        className="dialog-footer"
-      >
-        Footer Content
-      </div>
-    }
-    header={
-      <div
-        className="dialog-header"
-      >
-        <div
-          className="dialog-header-title"
-        >
-          Header Content
-        </div>
-      </div>
-    }
-  >
+  fill={true}
+  footer="Footer Content"
+  header={
     <div
-      className="dialog-body"
+      className="dialog-header"
     >
-      some body content
+      <div
+        className="dialog-header-title"
+      >
+        Header Content
+      </div>
     </div>
-  </ContentContainer>
-</div>
+  }
+>
+  some body content
+</ContentContainer>
+`;
+
+exports[`Dialog should render a Dialog with props - isStyledFooter 1`] = `
+<ContentContainer
+  className="dialog"
+  fill={true}
+  footer="Footer Content"
+  header={
+    <div
+      className="dialog-header"
+    >
+      <div
+        className="dialog-header-title"
+      >
+        Header Content
+      </div>
+    </div>
+  }
+  isStyledFooter={true}
+>
+  some body content
+</ContentContainer>
+`;
+
+exports[`Dialog should render a Dialog with props - onClose 1`] = `
+<ContentContainer
+  className="dialog"
+  fill={true}
+  footer="Footer Content"
+  header={
+    <div
+      className="dialog-header"
+    >
+      <div
+        className="dialog-header-title"
+      >
+        Header Content
+      </div>
+      <div
+        className="dialog-header-close"
+      >
+        <Button
+          icon={
+            <span
+              className="close-icon"
+            />
+          }
+          isBlock={false}
+          isCompact={false}
+          isDisabled={false}
+          isIconOnly={true}
+          isReversed={false}
+          onClick={[MockFunction]}
+          text="Close"
+          type="button"
+          variant="utility"
+        />
+      </div>
+    </div>
+  }
+>
+  some body content
+</ContentContainer>
 `;
 
 exports[`Dialog should render a default component 1`] = `
-<div
+<ContentContainer
   className="dialog"
->
-  <ContentContainer
-    fill={true}
-    footer={
-      <div
-        className="dialog-footer"
-      >
-        Footer Content
-      </div>
-    }
-    header={
-      <div
-        className="dialog-header"
-      >
-        <div
-          className="dialog-header-title"
-        >
-          Header Content
-        </div>
-      </div>
-    }
-  >
+  fill={true}
+  footer="Footer Content"
+  header={
     <div
-      className="dialog-body"
+      className="dialog-header"
     >
-      some body content
+      <div
+        className="dialog-header-title"
+      >
+        Header Content
+      </div>
     </div>
-  </ContentContainer>
-</div>
+  }
+  scrollRefCallback={[MockFunction]}
+>
+  some body content
+</ContentContainer>
 `;
