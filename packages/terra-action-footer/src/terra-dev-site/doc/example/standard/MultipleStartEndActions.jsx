@@ -21,5 +21,3 @@ export default () => (
     />
   </ExampleTemplate>
 );
-
-//      start={<a href="/#/site/action-footer">Start Action</a>}

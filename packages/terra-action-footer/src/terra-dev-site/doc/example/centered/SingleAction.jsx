@@ -11,5 +11,3 @@ export default () => (
     />
   </ExampleTemplate>
 );
-
-//      center={<a href="/#/site/action-footer/centered">A link</a>}
