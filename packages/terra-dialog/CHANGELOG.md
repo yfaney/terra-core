@@ -3,6 +3,13 @@ ChangeLog
 
 Unreleased
 ----------
+### BREAKING CHANGE
+* Removed styled from dialog-body and associated themeable variables.
+* Footer styling assigned to prop that is defaulted false.
+* Removed color themeable variable from footer styling.
+
+### Added
+* Themeable variable tests now included.
 
 1.13.0 - (June 12, 2018)
 ------------------
