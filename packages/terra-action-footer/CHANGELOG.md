@@ -3,6 +3,9 @@ ChangeLog
 
 Unreleased
 ----------
+* Updated default theme styles
+* Updated examples to use terra-hyperlink
+
 
 1.12.0 - (June 12, 2018)
 ------------------

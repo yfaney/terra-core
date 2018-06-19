@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'terra-button';
+import Hyperlink from 'terra-hyperlink';
 import Spacer from 'terra-spacer';
 // eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved, import/extensions
 import ActionFooter from 'terra-action-footer/lib/ActionFooter';
@@ -8,7 +9,7 @@ import ExampleTemplate from '../../common/ExampleTemplate';
 export default () => (
   <ExampleTemplate>
     <ActionFooter
-      start={<a href="/#/site/action-footer">Start Action</a>}
+      start={<Hyperlink href="#">Start Action</Hyperlink>}
       end={
         <div>
           <Spacer isInlineBlock paddingRight="medium">
@@ -20,3 +21,5 @@ export default () => (
     />
   </ExampleTemplate>
 );
+
+//      start={<a href="/#/site/action-footer">Start Action</a>}
