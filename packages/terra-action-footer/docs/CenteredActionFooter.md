@@ -7,14 +7,15 @@ The terra-centered-action-footer component is a footer bar that contains a singl
 ### Centered Action Footer with a Single Action
 ```jsx
 import React from 'react';
+import Hyperlink from 'terra-hyperlink';
 import CenteredActionFooter from 'terra-action-footer/lib/CenteredActionFooter';
 
 <CenteredActionFooter
-  center={<a href="/link/to/somewhere">A link</a>}
+  center={<Hyperlink href="#">A link</Hyperlink>}
 />
 ```
 
-### Centered Action Footer with Mutliple Actions
+### Centered Action Footer with Multiple Actions
 ```jsx
 import React from 'react';
 import Button from 'terra-button';
