@@ -1,11 +1,6 @@
 @import '~terra-mixins';
 
 :local {
-  .dialog {
-    height: 100%;
-    width: 100%;
-  }
-
   .dialog-header {
     align-items: center;
     background-color: var(--terra-dialog-header-background-color, #f4f4f4);
@@ -21,11 +16,6 @@
   .dialog-header-title {
     overflow: hidden;
     white-space: nowrap;
-  }
-
-  .dialog-header-close {
-    float: right;
-    text-align: right;
   }
 
   .close-icon {
