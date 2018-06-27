@@ -25,10 +25,13 @@ export default class extends React.Component {
         isInline
         required
       >
-        <Radio id="ux-dept" name="dept" labelText="UX/Interaction Design" onChange={this.handleOnChange} value="ux" />
-        <Radio id="magazine-dept" name="dept" labelText="Magazine Advertisements" onChange={this.handleOnChange} value="magazine" />
-        <Radio id="website-dept" name="dept" labelText="Website Advertisements" onChange={this.handleOnChange} value="website" />
-        <Radio id="events-dept" name="dept" labelText="Event Promotions" onChange={this.handleOnChange} value="events" />
+        {radio => (
+          <React.Fragment>
+            <Radio id="ux-dept" name="dept" labelText="UX/Interaction Design" onChange={this.handleOnChange} value="ux" inputAttrs={{ 'aria-describedby': radio.ariaDescribedby }} />
+            <Radio id="magazine-dept" name="dept" labelText="Magazine Advertisements" onChange={this.handleOnChange} value="magazine" />
+            <Radio id="website-dept" name="dept" labelText="Website Advertisements" onChange={this.handleOnChange} value="website" />
+          </React.Fragment>
+        )}
       </RadioField>
     );
   }

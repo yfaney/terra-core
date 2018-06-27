@@ -87,6 +87,8 @@ const contextTypes = {
   },
 };
 
+const hasWhiteSpace = s => /\s/g.test(s);
+
 const Field = (props, { intl }) => {
   const {
     children,
@@ -116,10 +118,20 @@ const Field = (props, { intl }) => {
     labelAttrs.className,
   ]);
 
+  if (htmlFor && hasWhiteSpace(htmlFor)) {
+    // eslint-disable-next-line
+    console.error('The htmlFor prop should be a string without white spaces as it will be used as an HTML attribute value. Use - or _ in place of white space characters.');
+  }
+
+  let labelId = `${htmlFor}-label`;
+  if (labelAttrs.id) {
+    labelId = labelAttrs.id;
+  }
+
   const labelGroup = (
     <div className={cx(['label-group', { 'label-group-hidden': isLabelHidden }])}>
       {isInvalid && <div className={cx('error-icon')}>{errorIcon}</div>}
-      {<label htmlFor={htmlFor} {...labelAttrs} className={labelClassNames}>
+      {<label id={labelId} htmlFor={htmlFor} {...labelAttrs} className={labelClassNames}>
         {required && (isInvalid || !hideRequired) && <div className={cx('required')}>*</div>}
         {label}
         {required && !isInvalid && hideRequired && <div className={cx('required-hidden')}>*</div>}
@@ -133,8 +145,8 @@ const Field = (props, { intl }) => {
     <div {...customProps} className={fieldClasses}>
       {labelGroup}
       {children}
-      {isInvalid && error && <div className={cx('error-text')}>{error}</div>}
-      {help && <div className={cx('help-text')}>{help}</div>}
+      {isInvalid && error && <div id={`${htmlFor}-error`} className={cx('error-text')}>{error}</div>}
+      {help && <div id={`${htmlFor}-help`} className={cx('help-text')}>{help}</div>}
     </div>
   );
 };

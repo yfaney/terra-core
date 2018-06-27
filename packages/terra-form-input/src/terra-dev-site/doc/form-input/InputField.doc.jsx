@@ -20,7 +20,7 @@ const DocPage = () => (
       {
         example: (
           <InputField
-            inputId="Profile Name"
+            inputId="profile-name"
             label="Profile Name"
             help="Note: This can not be changed in the future"
             inputAttrs={{

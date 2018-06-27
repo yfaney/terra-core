@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
+import Radio from './Radio';
 import styles from './RadioField.scss';
 
 const cx = classNames.bind(styles);
@@ -76,6 +77,8 @@ const contextTypes = {
   },
 };
 
+const RadioContext = React.createContext();
+
 const RadioField = (props, { intl }) => {
   const {
     children,
@@ -119,15 +122,47 @@ const RadioField = (props, { intl }) => {
   return (
     <fieldset {...customProps} className={radioFieldClasses}>
       {legendGroup}
-      {children}
+      <RadioContext.Provider
+        value={{
+          ariaDescribedBy: 'context1 context2',
+        }}
+      >
+        {children}
+      </RadioContext.Provider>
       {isInvalid && error && <div className={cx('error-text')}>{error}</div>}
       {help && <div className={cx('help-text')}>{help}</div>}
     </fieldset>
   );
 };
 
+const RadioOption = ({
+  inputAttrs,
+  ...customProps
+}) => {
+
+  // Check if a custom inputAttrs["aria-describedby"] has been set so we can merge it with context
+  if (inputAttrs && inputAttrs["aria-describedby"]) {
+    return (
+        <RadioContext.Consumer>
+          {radioGroup => (
+            <Radio {...customProps} inputAttrs={Object.assign({}, inputAttrs, { 'aria-describedby': `${radioGroup.ariaDescribedBy} ${inputAttrs["aria-describedby"]}` })} />
+          )}
+        </RadioContext.Consumer>
+    );
+  } else {
+    return (
+      <RadioContext.Consumer>
+        {radioGroup => (
+          <Radio {...customProps} inputAttrs={Object.assign({}, inputAttrs, { 'aria-describedby': `${radioGroup.ariaDescribedBy}` })} />
+        )}
+      </RadioContext.Consumer>
+    );
+  }
+};
+
 RadioField.propTypes = propTypes;
 RadioField.defaultProps = defaultProps;
 RadioField.contextTypes = contextTypes;
+RadioField.Radio = RadioOption;
 
 export default RadioField;

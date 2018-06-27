@@ -115,6 +115,10 @@ const InputField = (props) => {
     ...customProps
   } = props;
 
+  const helpDescription = help ? `${inputId}-help` : '';
+  const errorDescription = error && isInvalid ? `${inputId}-error` : '';
+  const ariaDescriptions = `${helpDescription} ${errorDescription}`;
+
   return (
     <Field
       label={label}
@@ -137,6 +141,7 @@ const InputField = (props) => {
         onChange={onChange}
         value={value}
         defaultValue={defaultValue}
+        aria-describedby={ariaDescriptions}
       />
     </Field>
   );

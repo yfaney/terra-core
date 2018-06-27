@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.5.8",
     "terra-doc-template": "^1.7.0",
     "terra-form-field": "^2.15.0",
