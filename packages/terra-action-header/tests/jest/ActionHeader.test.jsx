@@ -66,6 +66,18 @@ describe('ActionHeader', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should render an action header with next button and title', () => {
+    const actionHeader = <ActionHeader title="Action Header" onNext={() => {}} />;
+    const wrapper = shallow(actionHeader, intlContexts.shallowContext);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render an action header with previous button and title', () => {
+    const actionHeader = <ActionHeader title="Action Header" onPrevious={() => {}} />;
+    const wrapper = shallow(actionHeader, intlContexts.shallowContext);
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('should render an action header with next and previous buttons and title', () => {
     const actionHeader = <ActionHeader title="Action Header" onNext={() => {}} onPrevious={() => {}} />;
     const wrapper = shallow(actionHeader, intlContexts.shallowContext);

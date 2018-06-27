@@ -20,6 +20,10 @@ import MaximizeCloseActionHeader from '../example/MaximizeCloseActionHeader';
 import MaximizeCloseActionHeaderSrc from '!raw-loader!../../../../src/terra-dev-site/doc/example/MaximizeCloseActionHeader';
 import MinimizeCustomButtonActionHeader from '../example/MinimizeCustomButtonActionHeader';
 import MinimizeCustomButtonActionHeaderSrc from '!raw-loader!../../../../src/terra-dev-site/doc/example/MinimizeCustomButtonActionHeader';
+import BackPreviousCloseActionHeader from '../example/BackPreviousCloseActionHeader';
+import BackPreviousCloseActionHeaderSrc from '!raw-loader!../../../../src/terra-dev-site/doc/example/BackPreviousCloseActionHeader';
+import BackNextCloseActionHeader from '../example/BackNextCloseActionHeader';
+import BackNextCloseActionHeaderSrc from '!raw-loader!../../../../src/terra-dev-site/doc/example/BackNextCloseActionHeader';
 import BackPreviousNextCloseActionHeader from '../example/BackPreviousNextCloseActionHeader';
 import BackPreviousNextCloseActionHeaderSrc from '!raw-loader!../../../../src/terra-dev-site/doc/example/BackPreviousNextCloseActionHeader';
 /* eslint-enable import/no-webpack-loader-syntax, import/first, import/extensions, import/no-unresolved, import/no-duplicates */
@@ -45,6 +49,14 @@ const DocPage = () => (
       {
         example: <BackCloseActionHeader />,
         source: BackCloseActionHeaderSrc,
+      },
+      {
+        example: <BackNextCloseActionHeader />,
+        source: BackNextCloseActionHeaderSrc,
+      },
+      {
+        example: <BackPreviousCloseActionHeader />,
+        source: BackPreviousCloseActionHeaderSrc,
       },
       {
         example: <BackPreviousNextCloseActionHeader />,

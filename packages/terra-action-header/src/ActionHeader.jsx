@@ -106,12 +106,17 @@ const ActionHeader = ({
     }
   }
 
-  const previousNextButtonGroup = (onPrevious || onNext) ?
-    (<ButtonGroup>
-      <ButtonGroup.Button icon={<span className={cx(['header-icon', 'previous'])} />} text={previousText} onClick={onPrevious} key="ActionHeaderPrevious" />
-      <ButtonGroup.Button icon={<span className={cx(['header-icon', 'next'])} />} text={nextText} onClick={onNext} key="ActionHeaderNext" />
-    </ButtonGroup>) :
-    null;
+  let navigationButtons = [];
+
+  if (onPrevious) {
+    navigationButtons.push(<ButtonGroup.Button icon={<span className={cx(['header-icon', 'previous'])} />} text={previousText} onClick={onPrevious} key="ActionHeaderPrevious" />);
+  }
+
+  if (onNext) {
+    navigationButtons.push(<ButtonGroup.Button icon={<span className={cx(['header-icon', 'next'])} />} text={nextText} onClick={onNext} key="ActionHeaderNext" />);
+  }
+
+  const previousNextButtonGroup = (onPrevious || onNext) ? (<ButtonGroup>{navigationButtons}</ButtonGroup>) : null;
 
   const leftButtons = (backButton || expandButton || previousNextButtonGroup) ?
     (<div className={cx('left-buttons')}>
