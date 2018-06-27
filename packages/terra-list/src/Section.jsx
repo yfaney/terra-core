@@ -27,7 +27,13 @@ const defaultProps = {
 class Section extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { isOpen: true };
+    this.handleClick = this.handleClick.bind(this);
     this.generateHeader = this.generateHeader.bind(this);
+  }
+
+  handleClick() {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   }
 
   generateHeader() {
@@ -42,10 +48,17 @@ class Section extends React.Component {
   }
 
   render() {
+    if (this.state.isOpen) {
+      return (
+        <React.Fragment>
+          {this.generateHeader()}
+          {this.props.listItems}
+        </React.Fragment>
+      );
+    }
     return (
       <React.Fragment>
         {this.generateHeader()}
-        {this.props.listItems}
       </React.Fragment>
     );
   }

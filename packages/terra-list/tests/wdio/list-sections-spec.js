@@ -29,6 +29,44 @@ describe('List with Sections', () => {
     });
   });
 
+  describe('Single Selectable List Click Header', () => {
+    browser.url('/#/raw/tests/terra-list/list/single-select-list/single-select-sections');
+    it('Collapses the first Header on button click', () => {
+      browser.click('#Header1');
+    });
+    Terra.should.matchScreenshot('first section collapsed');
+
+    it('Expands the first Header on button click', () => {
+      browser.click('#Header1');
+      Terra.should.matchScreenshot('first section expanded');
+      Terra.should.beAccessible();
+    });
+  });
+
+  describe('Single Selectable List Keyboard Enter Key', () => {
+    browser.url('/#/raw/tests/terra-list/list/single-select-list/single-select-sections');
+    it('collapses the first section', () => {
+      browser.keys(['Tab', 'Enter']);
+    });
+    Terra.should.matchScreenshot('first section collapsed');
+    it('expand the first section', () => {
+      browser.keys(['Enter']);
+    });
+    Terra.should.matchScreenshot('first section expanded');
+  });
+
+  describe('Single Selectable List Keyboard Space Key', () => {
+    browser.url('/#/raw/tests/terra-list/list/single-select-list/single-select-sections');
+    it('collapses the first section', () => {
+      browser.keys(['Tab', 'Space']);
+    });
+    Terra.should.matchScreenshot('first section collapsed');
+    it('expand the first section', () => {
+      browser.keys(['Space']);
+    });
+    Terra.should.matchScreenshot('first section expanded');
+  });
+
   describe('Multi Selectable List with Sections', () => {
     beforeEach(() => browser.url('/#/raw/tests/terra-list/list/multi-select-list/multi-select-sections'));
 
@@ -55,5 +93,43 @@ describe('List with Sections', () => {
         '--terra-list-section-header-font-size': '10rem',
       },
     });
+  });
+
+  describe('Multi Selectable List Click Header', () => {
+    browser.url('/#/raw/tests/terra-list/list/single-select-list/multi-select-sections');
+    it('Collapses the first Header', () => {
+      browser.click('#Header1');
+    });
+    Terra.should.matchScreenshot('first section collapsed on button click');
+
+    it('Expands the first Header', () => {
+      browser.click('#Header1');
+    });
+    Terra.should.matchScreenshot('first section collapsed on button click');
+    Terra.should.beAccessible();
+  });
+
+  describe('Multi Selectable List Keyboard Enter Key', () => {
+    browser.url('/#/raw/tests/terra-list/list/multi-select-list/multi-select-sections');
+    it('collapses the first section', () => {
+      browser.keys(['Tab', 'Enter']);
+    });
+    Terra.should.matchScreenshot('first section collapsed');
+    it('expand the first section', () => {
+      browser.keys(['Enter']);
+    });
+    Terra.should.matchScreenshot('first section expanded');
+  });
+
+  describe('Multi Selectable List Keyboard Space Key', () => {
+    browser.url('/#/raw/tests/terra-list/list/multi-select-list/multi-select-sections');
+    it('collapses the first section', () => {
+      browser.keys(['Tab', 'Space']);
+    });
+    Terra.should.matchScreenshot('first section collapsed');
+    it('expand the first section', () => {
+      browser.keys(['Space']);
+    });
+    Terra.should.matchScreenshot('first section expanded');
   });
 });
