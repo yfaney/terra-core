@@ -28,6 +28,10 @@ const propTypes = {
    * Whether or not the table cells should be padded
    */
   isPadded: PropTypes.bool,
+  /**
+   * Function callback for the ref of the table.
+   */
+  refCallback: PropTypes.func,
 };
 
 const defaultProps = {
@@ -39,6 +43,7 @@ const Table = ({
   children,
   isStriped,
   isPadded,
+  refCallback,
   ...customProps
   }) => {
   const tableClassNames = cx([
@@ -48,7 +53,7 @@ const Table = ({
     customProps.className,
   ]);
   return (
-    <table {...customProps} className={tableClassNames}>
+    <table {...customProps} className={tableClassNames} ref={refCallback}>
       {children}
     </table>
   );

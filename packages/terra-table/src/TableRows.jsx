@@ -17,6 +17,10 @@ const propTypes = {
    * A callback function for onKeyDown action for tab key
    */
   onKeyDown: PropTypes.func,
+  /**
+   * Function callback for the ref of the tbody.
+   */
+  refCallback: PropTypes.func,
 };
 
 const defaultProps = {
@@ -61,12 +65,13 @@ const TableRows = ({
   children,
   onClick,
   onKeyDown,
+  refCallback,
   ...customProps
 }) => {
   const numberOfCols = getNumberOfColumns(children);
   const cloneChildren = cloneChildItems(children, onClick, onKeyDown, numberOfCols);
   return (
-    <tbody {...customProps}>
+    <tbody {...customProps} ref={refCallback}>
       {cloneChildren}
     </tbody>
   );

@@ -19,6 +19,10 @@ const propTypes = {
    * Whether or not row is selectable
    */
   isSelectable: PropTypes.bool,
+  /**
+   * Function callback for the ref of the tr.
+   */
+  refCallback: PropTypes.func,
 };
 
 const defaultProps = {
@@ -30,6 +34,7 @@ const TableRow = ({
   children,
   isSelected,
   isSelectable,
+  refCallback,
   ...customProps
   }) => {
   const rowClassNames = cx([
@@ -46,7 +51,7 @@ const TableRow = ({
   }
 
   return (
-    <tr {...customProps} aria-selected={isSelected} className={rowClassNames}>
+    <tr {...customProps} aria-selected={isSelected} className={rowClassNames} ref={refCallback}>
       {children}
     </tr>
   );
