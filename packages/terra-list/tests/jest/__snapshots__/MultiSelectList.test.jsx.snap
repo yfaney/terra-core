@@ -73,11 +73,12 @@ exports[`should collapse the section list when clicked on section. 1`] = `
               />,
             ]
           }
+          sectionIndex={0}
         >
           <ListItem
             content={
               <ListSectionHeader
-                id="Header1"
+                id="Section-1"
                 isOpen={false}
                 level={2}
                 onClick={[Function]}
@@ -91,7 +92,7 @@ exports[`should collapse the section list when clicked on section. 1`] = `
               className="list-item"
             >
               <ListSectionHeader
-                id="Header1"
+                id="Section-1"
                 isOpen={false}
                 level={2}
                 onClick={[Function]}
@@ -99,7 +100,7 @@ exports[`should collapse the section list when clicked on section. 1`] = `
               >
                 <div
                   className="list-section-header is-interactable"
-                  id="Header1"
+                  id="Section-1"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
@@ -194,11 +195,12 @@ exports[`should collapse the section list when clicked on section. 1`] = `
               />,
             ]
           }
+          sectionIndex={1}
         >
           <ListItem
             content={
               <ListSectionHeader
-                id="Header2"
+                id="Section-2"
                 isOpen={true}
                 level={2}
                 onClick={[Function]}
@@ -212,7 +214,7 @@ exports[`should collapse the section list when clicked on section. 1`] = `
               className="list-item"
             >
               <ListSectionHeader
-                id="Header2"
+                id="Section-2"
                 isOpen={true}
                 level={2}
                 onClick={[Function]}
@@ -220,7 +222,7 @@ exports[`should collapse the section list when clicked on section. 1`] = `
               >
                 <div
                   className="list-section-header is-interactable"
-                  id="Header2"
+                  id="Section-2"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
@@ -398,13 +400,8 @@ exports[`should mount with no items with section headers 1`] = `
           <ListItem
             content={
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
@@ -417,30 +414,20 @@ exports[`should mount with no items with section headers 1`] = `
               className="list-item"
             >
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
               >
                 <div
-<<<<<<< HEAD
-                  className="list-section-header"
-                  id="Section-1"
-=======
                   className="list-section-header is-interactable"
-                  id="Header1"
+                  id="Section-1"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
                   role="button"
                   tabIndex="0"
->>>>>>> 57c5704d... Accordion-Section-Header.
                 >
                   <Arrange
                     fill={
@@ -603,13 +590,8 @@ exports[`should mount with one items with Section Headers 1`] = `
           <ListItem
             content={
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
@@ -622,30 +604,20 @@ exports[`should mount with one items with Section Headers 1`] = `
               className="list-item"
             >
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
               >
                 <div
-<<<<<<< HEAD
-                  className="list-section-header"
-                  id="Section-1"
-=======
                   className="list-section-header is-interactable"
-                  id="Header1"
+                  id="Section-1"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
                   role="button"
                   tabIndex="0"
->>>>>>> 57c5704d... Accordion-Section-Header.
                 >
                   <Arrange
                     fill={
@@ -923,13 +895,8 @@ exports[`should select an item across multiple sections when maxSelectionCount i
           <ListItem
             content={
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
@@ -942,30 +909,20 @@ exports[`should select an item across multiple sections when maxSelectionCount i
               className="list-item"
             >
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
               >
                 <div
-<<<<<<< HEAD
-                  className="list-section-header"
-                  id="Section-1"
-=======
                   className="list-section-header is-interactable"
-                  id="Header1"
+                  id="Section-1"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
                   role="button"
                   tabIndex="0"
->>>>>>> 57c5704d... Accordion-Section-Header.
                 >
                   <Arrange
                     fill={
@@ -1133,13 +1090,8 @@ exports[`should select an item across multiple sections when maxSelectionCount i
           <ListItem
             content={
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-2"
-                isOpen={false}
-=======
-                id="Header2"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header2"
@@ -1152,30 +1104,20 @@ exports[`should select an item across multiple sections when maxSelectionCount i
               className="list-item"
             >
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-2"
-                isOpen={false}
-=======
-                id="Header2"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header2"
               >
                 <div
-<<<<<<< HEAD
-                  className="list-section-header"
-                  id="Section-2"
-=======
                   className="list-section-header is-interactable"
-                  id="Header2"
+                  id="Section-2"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
                   role="button"
                   tabIndex="0"
->>>>>>> 57c5704d... Accordion-Section-Header.
                 >
                   <Arrange
                     fill={
@@ -1387,13 +1329,8 @@ exports[`should select an item across multiple sections when maxSelectionCount i
           <ListItem
             content={
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
@@ -1406,30 +1343,20 @@ exports[`should select an item across multiple sections when maxSelectionCount i
               className="list-item"
             >
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
               >
                 <div
-<<<<<<< HEAD
-                  className="list-section-header"
-                  id="Section-1"
-=======
                   className="list-section-header is-interactable"
-                  id="Header1"
+                  id="Section-1"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
                   role="button"
                   tabIndex="0"
->>>>>>> 57c5704d... Accordion-Section-Header.
                 >
                   <Arrange
                     fill={
@@ -1585,13 +1512,8 @@ exports[`should select an item across multiple sections when maxSelectionCount i
           <ListItem
             content={
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-2"
-                isOpen={false}
-=======
-                id="Header2"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header2"
@@ -1604,30 +1526,20 @@ exports[`should select an item across multiple sections when maxSelectionCount i
               className="list-item"
             >
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-2"
-                isOpen={false}
-=======
-                id="Header2"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header2"
               >
                 <div
-<<<<<<< HEAD
-                  className="list-section-header"
-                  id="Section-2"
-=======
                   className="list-section-header is-interactable"
-                  id="Header2"
+                  id="Section-2"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
                   role="button"
                   tabIndex="0"
->>>>>>> 57c5704d... Accordion-Section-Header.
                 >
                   <Arrange
                     fill={
@@ -1827,13 +1739,8 @@ exports[`should select an item across multiple sections when maxSelectionCount i
           <ListItem
             content={
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
@@ -1846,30 +1753,20 @@ exports[`should select an item across multiple sections when maxSelectionCount i
               className="list-item"
             >
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
               >
                 <div
-<<<<<<< HEAD
-                  className="list-section-header"
-                  id="Section-1"
-=======
                   className="list-section-header is-interactable"
-                  id="Header1"
+                  id="Section-1"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
                   role="button"
                   tabIndex="0"
->>>>>>> 57c5704d... Accordion-Section-Header.
                 >
                   <Arrange
                     fill={
@@ -2025,13 +1922,8 @@ exports[`should select an item across multiple sections when maxSelectionCount i
           <ListItem
             content={
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-2"
-                isOpen={false}
-=======
-                id="Header2"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header2"
@@ -2044,30 +1936,20 @@ exports[`should select an item across multiple sections when maxSelectionCount i
               className="list-item"
             >
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-2"
-                isOpen={false}
-=======
-                id="Header2"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header2"
               >
                 <div
-<<<<<<< HEAD
-                  className="list-section-header"
-                  id="Section-2"
-=======
                   className="list-section-header is-interactable"
-                  id="Header2"
+                  id="Section-2"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
                   role="button"
                   tabIndex="0"
->>>>>>> 57c5704d... Accordion-Section-Header.
                 >
                   <Arrange
                     fill={
@@ -2267,13 +2149,8 @@ exports[`should select an item across multiple sections when maxSelectionCount i
           <ListItem
             content={
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
@@ -2286,30 +2163,20 @@ exports[`should select an item across multiple sections when maxSelectionCount i
               className="list-item"
             >
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-1"
-                isOpen={false}
-=======
-                id="Header1"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header1"
               >
                 <div
-<<<<<<< HEAD
-                  className="list-section-header"
-                  id="Section-1"
-=======
                   className="list-section-header is-interactable"
-                  id="Header1"
+                  id="Section-1"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
                   role="button"
                   tabIndex="0"
->>>>>>> 57c5704d... Accordion-Section-Header.
                 >
                   <Arrange
                     fill={
@@ -2465,13 +2332,8 @@ exports[`should select an item across multiple sections when maxSelectionCount i
           <ListItem
             content={
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-2"
-                isOpen={false}
-=======
-                id="Header2"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header2"
@@ -2484,30 +2346,20 @@ exports[`should select an item across multiple sections when maxSelectionCount i
               className="list-item"
             >
               <ListSectionHeader
-<<<<<<< HEAD
                 id="Section-2"
-                isOpen={false}
-=======
-                id="Header2"
                 isOpen={true}
->>>>>>> 57c5704d... Accordion-Section-Header.
                 level={2}
                 onClick={[Function]}
                 title="Header2"
               >
                 <div
-<<<<<<< HEAD
-                  className="list-section-header"
-                  id="Section-2"
-=======
                   className="list-section-header is-interactable"
-                  id="Header2"
+                  id="Section-2"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
                   role="button"
                   tabIndex="0"
->>>>>>> 57c5704d... Accordion-Section-Header.
                 >
                   <Arrange
                     fill={

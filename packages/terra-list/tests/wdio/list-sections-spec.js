@@ -63,13 +63,13 @@ describe('Accordion List Sections', () => {
     browser.url('/#/raw/tests/terra-list/list/single-select-list/single-select-sections');
 
     it('Collapses the first Header', () => {
-      browser.click('[id="Header 1"]');
+      browser.click('#Section-1');
     });
 
     Terra.should.matchScreenshot('first section collapsed');
 
     it('Expands the first Header', () => {
-      browser.click('[id="Header 1"]');
+      browser.click('#Section-1');
     });
 
     Terra.should.matchScreenshot('first section expands');
@@ -85,7 +85,7 @@ describe('Accordion List Sections', () => {
 
   describe('Single Selectable List Hover', () => {
     browser.url('/#/raw/tests/terra-list/list/single-select-list/single-select-sections');
-    browser.moveToObject('[id="Header 1"]');
+    browser.moveToObject('#Section-1');
 
     Terra.should.matchScreenshot('first section hovered');
   });
@@ -122,13 +122,13 @@ describe('Accordion List Sections', () => {
     browser.url('/#/raw/tests/terra-list/list/multi-select-list/multi-select-sections');
 
     it('Collapses the first Header', () => {
-      browser.click('[id="Header 1"]');
+      browser.click('#Section-1');
     });
 
     Terra.should.matchScreenshot('first section collapsed');
 
     it('Expands the first Header', () => {
-      browser.click('[id="Header 1"]');
+      browser.click('#Section-1');
     });
 
     Terra.should.matchScreenshot('first section expands');
@@ -144,7 +144,7 @@ describe('Accordion List Sections', () => {
 
   describe('Multi Selectable List Hover', () => {
     browser.url('/#/raw/tests/terra-list/list/multi-select-list/multi-select-sections');
-    browser.moveToObject('[id="Header 1"]');
+    browser.moveToObject('#Section-1');
 
     Terra.should.matchScreenshot('first section hovered');
   });

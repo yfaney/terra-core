@@ -77,7 +77,7 @@ it('should select an item across multiple sections', () => {
         headerContent="Header1"
         listItems={sectionItems1}
       />
-      <SingleSelectList.Section id="Section2"
+      <SingleSelectList.Section
         headerContent="Header2"
         listItems={sectionItems2}
       />
@@ -104,10 +104,12 @@ it('should collapse the section list when clicked on section.', () => {
   const sectionItems2 = [item4, item5];
   const singleSelectList = (
     <SingleSelectList hasSections>
-      <SingleSelectList.Section headerContent="Header1"
+      <SingleSelectList.Section
+        headerContent="Header1"
         listItems={sectionItems1}
       />
-      <SingleSelectList.Section headerContent="Header2"
+      <SingleSelectList.Section
+        headerContent="Header2"
         listItems={sectionItems2}
       />
     </SingleSelectList>
@@ -115,7 +117,7 @@ it('should collapse the section list when clicked on section.', () => {
 
   const singleSelect = mount(singleSelectList);
 
-  singleSelect.find('#Header1').first().simulate('click', { preventDefault() {} });
+  singleSelect.find('#Section-1').first().simulate('click', { preventDefault() {} });
   expect(singleSelect).toMatchSnapshot();
 });
 

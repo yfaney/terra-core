@@ -86,10 +86,12 @@ it('should collapse the section list when clicked on section.', () => {
   const sectionItems2 = [item4, item5];
   const multiSelectList = (
     <MultiSelectList hasSections>
-      <MultiSelectList.Section headerContent="Header1"
+      <MultiSelectList.Section
+        headerContent="Header1"
         listItems={sectionItems1}
       />
-      <MultiSelectList.Section headerContent="Header2"
+      <MultiSelectList.Section
+        headerContent="Header2"
         listItems={sectionItems2}
       />
     </MultiSelectList>
@@ -97,7 +99,7 @@ it('should collapse the section list when clicked on section.', () => {
 
   const multiSelect = mount(multiSelectList);
 
-  multiSelect.find('#Header1').first().simulate('click', { preventDefault() {} });
+  multiSelect.find('#Section-1').first().simulate('click', { preventDefault() {} });
   expect(multiSelect).toMatchSnapshot();
 });
 

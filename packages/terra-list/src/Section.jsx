@@ -42,6 +42,8 @@ class Section extends React.Component {
         <ListSectionHeader
           id={`Section-${this.props.sectionIndex + 1}`}
           title={this.props.headerContent}
+          isOpen={this.state.isOpen}
+          onClick={this.handleClick}
         />}
       key={this.props.headerContent}
     />);
