@@ -65,6 +65,8 @@
   .accordion-icon-wrapper {
     margin-left: var(--terra-list-section-header-accordion-icon-margin-start);
     margin-right: var(--terra-list-section-header-accordion-icon-margin-end, 0.357142857rem);
+    padding-left: var(--terra-list-section-header-accordion-icon-padding-start);
+    padding-right: var(--terra-list-section-header-accordion-icon-padding-end);
     padding-bottom: var(--terra-list-section-header-accordion-icon-padding-bottom);
     padding-left: var(--terra-list-section-header-accordion-icon-padding-start);
     padding-right: var(--terra-list-section-header-accordion-icon-padding-end);
