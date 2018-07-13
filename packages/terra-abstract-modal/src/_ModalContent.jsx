@@ -88,15 +88,10 @@ class ModalContent extends React.Component {
       ...customProps
     } = this.props;
 
-    let zIndexLayer = '6000';
-    if (zIndexes.indexOf(zIndex) >= 0) {
-      zIndexLayer = zIndex;
-    }
-
     const modalClassName = cx([
       'abstract-modal',
       { 'is-fullscreen': isFullscreen },
-      `layer-${zIndexLayer}`,
+      `layer-${zIndex}`,
       classNameModal,
     ]);
 
