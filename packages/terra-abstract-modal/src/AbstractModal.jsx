@@ -4,7 +4,7 @@ import { Portal } from 'react-portal';
 import 'terra-base/lib/baseStyles';
 import ModalContent from './_ModalContent';
 
-const zIndexes = ['6000', '7000', '8000', '9000'];
+import { ModalZIndexes } from './_modalConstants';
 
 const propTypes = {
   /**
@@ -52,9 +52,9 @@ const propTypes = {
    */
   role: PropTypes.string,
   /**
-   * Z-Index layer to apply to the ModalContent and ModalOverlay. Valid values are the standard modal layer: '6000', and the max layer: '8000'.
+   * Z-Index layer to apply to the ModalContent and ModalOverlay. Valid values are the standard modal layer: `'6000'`, `'7000'`, `'8000'`, `'9000'`.
    */
-  zIndex: PropTypes.oneOf(zIndexes),
+  zIndex: PropTypes.oneOf(Object.values(ModalZIndexes)),
 };
 
 const defaultProps = {
@@ -65,6 +65,10 @@ const defaultProps = {
   isFocused: true,
   isFullscreen: false,
   role: 'document',
+  /*
+    NOTE: this should ALWAYS be equal to ModelZIndexes.DEFAULT, providing the literal
+    value to ensure terra-props-table displays the stringified version.
+  */
   zIndex: '6000',
 };
 
@@ -150,3 +154,4 @@ AbstractModal.propTypes = propTypes;
 AbstractModal.defaultProps = defaultProps;
 
 export default AbstractModal;
+export { ModalZIndexes as AbstractModalZIndexes };

@@ -10,8 +10,6 @@ import { ModalZIndexes } from './_modalConstants';
 
 const cx = classNames.bind(styles);
 
-const zIndexes = ['6000', '7000', '8000', '9000'];
-
 const propTypes = {
   /**
    * String that labels the modal for screen readers.

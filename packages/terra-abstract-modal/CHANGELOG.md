@@ -1,5 +1,7 @@
 Changelog
 =========
+### Added
+* Enum of valid z-indexes
 
 Unreleased
 ----------
