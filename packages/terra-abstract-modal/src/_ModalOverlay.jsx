@@ -35,11 +35,7 @@ class ModalOverlay extends React.Component {
 
   render() {
     const { zIndex, ...customProps } = this.props;
-    let zIndexLayer = '6000';
-    if (zIndexes.indexOf(zIndex) >= 0) {
-      zIndexLayer = zIndex;
-    }
-    return <div {...customProps} className={cx(['overlay', `layer-${zIndexLayer}`, customProps.className])} />;
+    return <div {...customProps} className={cx(['overlay', `layer-${zIndex}`, customProps.className])} />;
   }
 }
 
