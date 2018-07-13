@@ -6,6 +6,8 @@ import 'terra-base/lib/baseStyles';
 import ModalOverlay from './_ModalOverlay';
 import styles from './AbstractModal.scss';
 
+import { ModalZIndexes } from './_modalConstants';
+
 const cx = classNames.bind(styles);
 
 const zIndexes = ['6000', '7000', '8000', '9000'];
@@ -54,7 +56,7 @@ const propTypes = {
   /**
    * Z-Index layer to apply to the ModalContent and ModalOverlay.
    */
-  zIndex: PropTypes.oneOf(zIndexes),
+  zIndex: PropTypes.oneOf(Object.values(ModalZIndexes)),
 };
 
 const defaultProps = {
@@ -65,7 +67,7 @@ const defaultProps = {
   isFullscreen: false,
   isScrollable: false,
   role: 'dialog',
-  zIndex: '6000',
+  zIndex: ModalZIndexes.DEFAULT,
 };
 
 /* eslint-disable react/prefer-stateless-function */
