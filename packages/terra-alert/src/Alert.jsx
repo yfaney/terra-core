@@ -205,3 +205,4 @@ Alert.Opts = {};
 Alert.Opts.Types = AlertTypes;
 
 export default Alert;
+export { AlertTypes };
