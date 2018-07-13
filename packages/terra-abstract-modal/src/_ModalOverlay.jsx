@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import 'terra-base/lib/baseStyles';
 import styles from './ModalOverlay.scss';
 
+import { ModalZIndexes } from './_modalConstants';
+
 const cx = classNames.bind(styles);
 
 const zIndexes = ['6000', '7000', '8000', '9000'];
@@ -12,11 +14,11 @@ const propTypes = {
   /**
    * Z-Index layer to apply to the ModalContent and ModalOverlay.
    */
-  zIndex: PropTypes.oneOf(zIndexes),
+  zIndex: PropTypes.oneOf(Object.values(ModalZIndexes)),
 };
 
 const defaultProps = {
-  zIndex: '6000',
+  zIndex: ModalZIndexes.DEFAULT,
 };
 
 class ModalOverlay extends React.Component {
