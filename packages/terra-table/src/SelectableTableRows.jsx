@@ -33,43 +33,30 @@ const defaultProps = {
   selectedIndexes: [],
 };
 
-class SelectableTableRows extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleOnChange = this.handleOnChange.bind(this);
-  }
 
-  handleOnChange(event, index) {
-    if (this.props.onChange) {
-      this.props.onChange(event, index);
+const SelectableList = ({
+  children,
+  disableUnselectedRows,
+  onChange,
+  selectedIndexes,
+  ...customProps
+}) => {
+  const clonedChildRows = React.Children.map(children, (child, index) => {
+    if (child && child.type !== TableHeader && child.type !== TableSubheader) {
+      const wrappedOnClick = SelectableUtils.wrappedOnClickForRow(child, index, onChange);
+      const wrappedOnKeyDown = SelectableUtils.wrappedOnKeyDownForRow(child, index, onChange);
+      const newProps = SelectableUtils.newPropsForRow(row, index, wrappedOnClick, wrappedOnKeyDown, selectedIndexes, disableUnselectedRows);
+      return React.cloneElement(row, newProps);
     }
-  }
+    return row;
+  });
 
-  clonedChildItems(children) {
-    return React.Children.map(children, (child, index) => {
-      if (child && child.type !== TableHeader && child.type !== TableSubheader) {
-        const wrappedOnClick = SelectableUtils.wrappedOnClickForRow(child, index, onChange);
-        const wrappedOnKeyDown = SelectableUtils.wrappedOnKeyDownForRow(child, index, onChange);
-        const newProps = SelectableUtils.newPropsForRow(row, index, wrappedOnClick, wrappedOnKeyDown, selectedIndexes, disableUnselectedRows);
-        return React.cloneElement(row, newProps);
-      }
-      return row;
-    });
-  }
-
-  render() {
-    const {
-      children, disableUnselectedRows, onChange, selectedIndexes, ...customProps
-    } = this.props;
-    const clonedChildItems = this.clonedChildItems(children);
-
-    return (
-      <TableRows {...customProps}>
-        {clonedChildItems}
-      </TableRows>
-    );
-  }
-}
+  return (
+    <TableRows {...customProps}>
+      {clonedChildItems}
+    </TableRows>
+  );
+};
 
 SelectableTableRows.propTypes = propTypes;
 SelectableTableRows.defaultProps = defaultProps;

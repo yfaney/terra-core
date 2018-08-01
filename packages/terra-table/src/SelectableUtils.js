@@ -109,7 +109,7 @@ const wrappedOnClickForRow = (row, index, onChange) => {
       initialOnClick(event);
     }
   };
-}
+};
 
 /**
  * Returns a wrapped onKeyDown callback function with enter and space keys triggering onChange.
@@ -129,12 +129,12 @@ const wrappedOnKeyDownForRow = (row, index, onChange) => {
       initialOnKeyDown(event);
     }
   };
-}
+};
 
 /**
  * Returns an object containing accessiblity and selectable properties.
  */
-newPropsForRow(row, index, onClick, onKeyDown, selectedIndexes, disableUnselectedRows) {
+const newPropsForRow = (row, index, onClick, onKeyDown, selectedIndexes, disableUnselectedRows) => {
   const isSelected = selectedIndexes.indexOf(index) >= 0;
   const newProps = { };
 
@@ -162,7 +162,7 @@ newPropsForRow(row, index, onClick, onKeyDown, selectedIndexes, disableUnselecte
   }
 
   return newProps;
-}
+};
 
 const SelectableUtils = {
   validatedMaxCountSelection,
