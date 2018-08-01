@@ -34,7 +34,7 @@ const defaultProps = {
 };
 
 
-const SelectableList = ({
+const SelectableTableRows = ({
   children,
   disableUnselectedRows,
   onChange,
@@ -45,15 +45,15 @@ const SelectableList = ({
     if (child && child.type !== TableHeader && child.type !== TableSubheader) {
       const wrappedOnClick = SelectableUtils.wrappedOnClickForRow(child, index, onChange);
       const wrappedOnKeyDown = SelectableUtils.wrappedOnKeyDownForRow(child, index, onChange);
-      const newProps = SelectableUtils.newPropsForRow(row, index, wrappedOnClick, wrappedOnKeyDown, selectedIndexes, disableUnselectedRows);
-      return React.cloneElement(row, newProps);
+      const newProps = SelectableUtils.newPropsForRow(child, index, wrappedOnClick, wrappedOnKeyDown, selectedIndexes, disableUnselectedRows);
+      return React.cloneElement(child, newProps);
     }
     return row;
   });
 
   return (
     <TableRows {...customProps}>
-      {clonedChildItems}
+      {clonedChildRows}
     </TableRows>
   );
 };
