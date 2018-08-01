@@ -1,6 +1,14 @@
 import React from 'react';
 
 /**
+ * The KEYCODES supported by seletectable table components.
+ */
+const KEYCODES = {
+  ENTER: 13,
+  SPACE: 32,
+};
+
+/**
  * Returns a validated max count for selection. Validates the max count prop, and if undefined
  * returns a max of the count of children.
  */
@@ -86,12 +94,75 @@ const shouldHandleMultiSelectRowSelection = (children, maxSelectionCount, curren
 };
 
 /**
- * The KEYCODES supported by seletectable table components.
+ * Returns a wrapped onClick callback function.
  */
-const KEYCODES = {
-  ENTER: 13,
-  SPACE: 32,
-};
+const wrappedOnClickForRow = (row, index, onChange) => {
+  const initialOnClick = row.props.onClick;
+
+  return (event) => {
+    // The default isSelectable attribute is either undefined or true, unless the consumer specifies the row's isSelectable attribute as false.
+    if (row.props.isSelectable !== false && onChange) {
+      this.handleOnChange(event, index);
+    }
+
+    if (initialOnClick) {
+      initialOnClick(event);
+    }
+  };
+}
+
+/**
+ * Returns a wrapped onKeyDown callback function with enter and space keys triggering onChange.
+ */
+const wrappedOnKeyDownForRow = (row, index, onChange) => {
+  const initialOnKeyDown = row.props.onKeyDown;
+
+  return (event) => {
+    if (event.nativeEvent.keyCode === KEYCODES.ENTER || event.nativeEvent.keyCode === KEYCODES.SPACE) {
+      // The default isSelectable attribute is either undefined or true, unless the consumer specifies the row's isSelectable attribute as false.
+      if (row.props.isSelectable !== false && onChange) {
+        onChange(event, index);
+      }
+    }
+
+    if (initialOnKeyDown) {
+      initialOnKeyDown(event);
+    }
+  };
+}
+
+/**
+ * Returns an object containing accessiblity and selectable properties.
+ */
+newPropsForRow(row, index, onClick, onKeyDown, selectedIndexes, disableUnselectedRows) {
+  const isSelected = selectedIndexes.indexOf(index) >= 0;
+  const newProps = { };
+
+  // Set the isSelected attribute to false for all the rows except the rows whose index is set to state selectedIndex.
+  if (isSelected !== row.props.isSelected) {
+    newProps.isSelected = isSelected;
+  }
+
+  // Set the default isSelectable attribute to true, unless the consumer specifies the row isSelectable as false.
+  newProps.isSelectable = true;
+  if (row.props.isSelectable === false) {
+    newProps.isSelectable = row.props.isSelectable;
+  }
+
+  if (disableUnselectedRows && !isSelected) {
+    newProps.isSelectable = false;
+  }
+
+  // If selectable, add tabIndex on rows to navigate through keyboard tab key for selectable row and add
+  // onClick and onKeyDown functions.
+  if (newProps.isSelectable) {
+    newProps.tabIndex = '0';
+    newProps.onClick = onClick;
+    newProps.onKeyDown = onKeyDown;
+  }
+
+  return newProps;
+}
 
 const SelectableUtils = {
   validatedMaxCountSelection,
@@ -101,6 +172,9 @@ const SelectableUtils = {
   shouldHandleSingleSelectRowSelection,
   shouldHandleMultiSelectRowSelection,
   KEYCODES,
+  wrappedOnClickForRow,
+  wrappedOnKeyDownForRow,
+  newPropsForRow,
 };
 
 export default SelectableUtils;

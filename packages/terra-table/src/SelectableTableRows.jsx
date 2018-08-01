@@ -45,74 +45,12 @@ class SelectableTableRows extends React.Component {
     }
   }
 
-  wrappedOnClickForRow(row, index) {
-    const initialOnClick = row.props.onClick;
-
-    return (event) => {
-      // The default isSelectable attribute is either undefined or true, unless the consumer specifies the row's isSelectable attribute as false.
-      if (row.props.isSelectable !== false) {
-        this.handleOnChange(event, index);
-      }
-
-      if (initialOnClick) {
-        initialOnClick(event);
-      }
-    };
-  }
-
-  wrappedOnKeyDownForRow(row, index) {
-    const initialOnKeyDown = row.props.onKeyDown;
-
-    return (event) => {
-      if (event.nativeEvent.keyCode === SelectableUtils.KEYCODES.ENTER || event.nativeEvent.keyCode === SelectableUtils.KEYCODES.SPACE) {
-        // The default isSelectable attribute is either undefined or true, unless the consumer specifies the row's isSelectable attribute as false.
-        if (row.props.isSelectable !== false) {
-          this.handleOnChange(event, index);
-        }
-      }
-
-      if (initialOnKeyDown) {
-        initialOnKeyDown(event);
-      }
-    };
-  }
-
-  newPropsForRow(row, index, onClick, onKeyDown) {
-    const isSelected = this.props.selectedIndexes.indexOf(index) >= 0;
-    const newProps = { };
-
-    // Set the isSelected attribute to false for all the rows except the rows whose index is set to state selectedIndex.
-    if (isSelected !== row.props.isSelected) {
-      newProps.isSelected = isSelected;
-    }
-
-    // Set the default isSelectable attribute to true, unless the consumer specifies the row isSelectable as false.
-    newProps.isSelectable = true;
-    if (row.props.isSelectable === false) {
-      newProps.isSelectable = row.props.isSelectable;
-    }
-
-    if (this.props.disableUnselectedRows && !isSelected) {
-      newProps.isSelectable = false;
-    }
-
-    // If selectable, add tabIndex on rows to navigate through keyboard tab key for selectable row and add
-    // onClick and onKeyDown functions.
-    if (newProps.isSelectable) {
-      newProps.tabIndex = '0';
-      newProps.onClick = onClick;
-      newProps.onKeyDown = onKeyDown;
-    }
-
-    return newProps;
-  }
-
-  clonedChildItems(rows) {
-    return React.Children.map(rows, (row, index) => {
-      if (row.type !== TableHeader && row.type !== TableSubheader) {
-        const wrappedOnClick = this.wrappedOnClickForRow(row, index);
-        const wrappedOnKeyDown = this.wrappedOnKeyDownForRow(row, index);
-        const newProps = this.newPropsForRow(row, index, wrappedOnClick, wrappedOnKeyDown);
+  clonedChildItems(children) {
+    return React.Children.map(children, (child, index) => {
+      if (child && child.type !== TableHeader && child.type !== TableSubheader) {
+        const wrappedOnClick = SelectableUtils.wrappedOnClickForRow(child, index, onChange);
+        const wrappedOnKeyDown = SelectableUtils.wrappedOnKeyDownForRow(child, index, onChange);
+        const newProps = SelectableUtils.newPropsForRow(row, index, wrappedOnClick, wrappedOnKeyDown, selectedIndexes, disableUnselectedRows);
         return React.cloneElement(row, newProps);
       }
       return row;
