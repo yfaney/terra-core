@@ -5,14 +5,14 @@ import IconSpinner from 'terra-icon/lib/icon/IconSpinner';
 import 'terra-base/lib/baseStyles';
 
 import Overlay from './Overlay';
-import styles from './Overlay.scss';
+import styles from './Overlay.module.scss';
 
 const cx = classNames.bind(styles);
 
-const BackgroundStyles = Overlay.Opts.BackgroundStyles;
+const { BackgroundStyles } = Overlay.Opts;
 
 const propTypes = {
- /**
+  /**
  * The message to be displayed within the overlay.
  */
   message: PropTypes.string,
@@ -54,7 +54,8 @@ const contextTypes = {
 const LoadingOverlay = ({
   message,
   isAnimated,
-  ...customProps }, {
+  ...customProps
+}, {
   intl,
 }) => {
   // eslint-disable-next-line no-param-reassign

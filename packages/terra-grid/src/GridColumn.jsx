@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
-import styles from './Grid.scss';
+import styles from './Grid.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -52,16 +52,16 @@ const propTypes = {
 };
 
 const GridColumn = ({
-    className,
-    children,
-    col,
-    tiny,
-    small,
-    medium,
-    large,
-    huge,
-    ...customProps
-  }) => {
+  className,
+  children,
+  col,
+  tiny,
+  small,
+  medium,
+  large,
+  huge,
+  ...customProps
+}) => {
   const colClassNames = cx([
     'column', {
       [`column-${col}`]: col,

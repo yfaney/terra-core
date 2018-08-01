@@ -6,7 +6,7 @@ import ResponsiveElement from 'terra-responsive-element';
 import PopperContainer from './_PopperContainer';
 import DateInput from './DateInput';
 import DateUtil from './DateUtil';
-import styles from './DatePicker.scss';
+import styles from './DatePicker.module.scss';
 
 const propTypes = {
   /**
@@ -30,6 +30,7 @@ const propTypes = {
    * Custom input attributes to apply to the date input. Use the name prop to set the name for the input.
    * Do not set the name in inputAttribute as it will be ignored.
    */
+  // eslint-disable-next-line react/forbid-prop-types
   inputAttributes: PropTypes.object,
   /**
    * An ISO 8601 string representation of the maximum date that can be selected.
@@ -84,7 +85,6 @@ const defaultProps = {
   inputAttributes: undefined,
   maxDate: undefined,
   minDate: undefined,
-  name: undefined,
   onChange: undefined,
   onChangeRaw: undefined,
   onClickOutside: undefined,
@@ -248,9 +248,10 @@ class DatePicker extends React.Component {
     delete customProps.onCalendarButtonClick;
     delete customProps.onInputFocus;
 
-    const intl = this.context.intl;
+    const { intl } = this.context;
     const todayString = intl.formatMessage({ id: 'Terra.datePicker.today' });
     const dateFormat = DateUtil.getFormatByLocale(intl.locale);
+    const placeholderText = intl.formatMessage({ id: 'Terra.datePicker.dateFormat' });
     const exludeMomentDates = DateUtil.filterInvalidDates(excludeDates);
     const includeMomentDates = DateUtil.filterInvalidDates(includeDates);
     const maxMomentDate = DateUtil.createSafeDate(maxDate);
@@ -283,8 +284,8 @@ class DatePicker extends React.Component {
         dateFormat={dateFormat}
         fixedHeight
         locale={intl.locale}
-        placeholderText={dateFormat}
-        dropdownMode={'select'}
+        placeholderText={placeholderText}
+        dropdownMode="select"
         showMonthDropdown
         showYearDropdown
         name={name}
@@ -316,7 +317,7 @@ class DatePicker extends React.Component {
         dateFormat={dateFormat}
         fixedHeight
         locale={intl.locale}
-        placeholderText={dateFormat}
+        placeholderText={placeholderText}
         popperContainer={PopperContainer}
         popperPlacement="bottom"
         popperModifiers={{
@@ -326,7 +327,7 @@ class DatePicker extends React.Component {
         }}
         popoverAttachment="top center"
         popoverTargetAttachment="bottom center"
-        dropdownMode={'select'}
+        dropdownMode="select"
         showMonthDropdown
         showYearDropdown
         name={name}

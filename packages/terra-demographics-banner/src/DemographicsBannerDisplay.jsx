@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ResponsiveElement from 'terra-responsive-element';
 import 'terra-base/lib/baseStyles';
 
-import './DemographicsBanner.scss';
+import './DemographicsBanner.module.scss';
 import SmallDemographicsBannerDisplay from './_SmallDemographicsBannerDisplay';
 import LargeDemographicsBannerDisplay from './_LargeDemographicsBannerDisplay';
 
@@ -47,6 +47,7 @@ const propTypes = {
   /**
    * Additional key value identifiers of a person's demographic information
    */
+  // eslint-disable-next-line react/forbid-prop-types
   identifiers: PropTypes.object,
   /**
    * Full Name of the person

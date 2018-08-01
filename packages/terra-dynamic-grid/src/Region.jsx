@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
-import styles from './DynamicGrid.scss';
-import style from './Region.scss';
+import styles from './DynamicGrid.module.scss';
+import style from './Region.module.scss';
 import { region } from './styles';
 
 const cx = classNames.bind(style);
@@ -31,6 +31,7 @@ const positionShape = {
   /**
   * Additional CSS properties to apply to the region.
   */
+  // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,
 };
 

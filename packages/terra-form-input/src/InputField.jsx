@@ -39,6 +39,7 @@ const propTypes = {
   /**
    * Attributes to attach to the input object
    */
+  // eslint-disable-next-line react/forbid-prop-types
   inputAttrs: PropTypes.object,
   /**
    * Whether or not the field is an inline field.
@@ -55,11 +56,16 @@ const propTypes = {
   /**
    * Attributes to attach to the label.
    */
+  // eslint-disable-next-line react/forbid-prop-types
   labelAttrs: PropTypes.object,
   /**
    * Function to trigger when user changes the input value. Provide a function to create a controlled input.
    */
   onChange: PropTypes.func,
+  /**
+   * Ref callback to pass into the ref attribute of the html input element.
+   */
+  refCallback: PropTypes.func,
   /**
    * Whether or not the field is required.
    */
@@ -89,6 +95,7 @@ const defaultProps = {
   isLabelHidden: false,
   labelAttrs: {},
   onChange: undefined,
+  refCallback: undefined,
   required: false,
   showOptional: false,
   value: undefined,
@@ -108,6 +115,7 @@ const InputField = (props) => {
     isLabelHidden,
     label,
     labelAttrs,
+    refCallback,
     required,
     showOptional,
     onChange,
@@ -137,6 +145,7 @@ const InputField = (props) => {
         onChange={onChange}
         value={value}
         defaultValue={defaultValue}
+        refCallback={refCallback}
       />
     </Field>
   );

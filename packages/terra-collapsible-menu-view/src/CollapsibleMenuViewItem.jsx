@@ -5,7 +5,7 @@ import Button from 'terra-button';
 import ButtonGroup from 'terra-button-group';
 import 'terra-base/lib/baseStyles';
 import Menu from './_CollapsibleMenu';
-import styles from './CollapsibleMenuView.scss';
+import styles from './CollapsibleMenuView.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -75,7 +75,6 @@ const contextTypes = {
 const defaultProps = {
   isSelected: false,
   isReversed: false,
-  text: '',
   shouldCloseOnClick: true,
   isIconOnly: false,
 };

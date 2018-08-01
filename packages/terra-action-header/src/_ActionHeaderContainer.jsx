@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
-import styles from './ActionHeaderContainer.scss';
+import styles from './ActionHeaderContainer.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -40,7 +40,9 @@ const defaultProps = {
   endContent: undefined,
 };
 
-const ActionHeaderContainer = ({ children, title, startContent, endContent, level, ...customProps }) => {
+const ActionHeaderContainer = ({
+  children, title, startContent, endContent, level, ...customProps
+}) => {
   const HeaderElement = `h${level}`;
 
   const content = React.Children.map(children, child => (

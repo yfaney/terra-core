@@ -14,12 +14,12 @@ describe('Snapshots', () => {
   });
 
   it('renders a search field with a value', () => {
-    const searchField = shallow(<SearchField value={'Test'} />, intlContexts.shallowContext);
+    const searchField = shallow(<SearchField value="Test" />, intlContexts.shallowContext);
     expect(searchField).toMatchSnapshot();
   });
 
   it('renders a search field with a defaulted value', () => {
-    const searchField = shallow(<SearchField defaultValue={'Default'} />, intlContexts.shallowContext);
+    const searchField = shallow(<SearchField defaultValue="Default" />, intlContexts.shallowContext);
     expect(searchField).toMatchSnapshot();
   });
 
@@ -34,6 +34,14 @@ describe('Snapshots', () => {
     const searchField = shallow(<SearchField isBlock />, intlContexts.shallowContext);
     searchField.setState({ searchText: 'Test' });
 
+    expect(searchField).toMatchSnapshot();
+  });
+
+  it('passes in inputRefCallback as the refCallback prop of the Input component', () => {
+    const inputRefCallback = jest.fn();
+    const searchField = mount(<SearchField inputRefCallback={inputRefCallback} />, intlContexts.mountContext);
+    expect(inputRefCallback).toBeCalled();
+    expect(searchField.find('Input').props().refCallback).toBeCalled();
     expect(searchField).toMatchSnapshot();
   });
 });

@@ -3,8 +3,44 @@ ChangeLog
 
 Unreleased
 ----------
+
+1.11.0 - (July 25, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+
+1.10.0 - (July 19, 2018)
+------------------
+### Changed
+* Add .module extension to SCSS file(s)
+
+1.9.0 - (July 17, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+* Formatting changes per eslint v4 update
+
+### Fixed
+* Removed usage of CSS `initial` value because Internet Explorer does not support it
+
+1.8.0 - (July 10, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+
+1.7.0 - (July 3, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+
+1.6.0 - (June 28, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+
 ### Fixed
 * Fixed accessibility issue where where previous and next anchors had no link content on narrow viewports
+
 ### Added
 * Added change log to the documentation on terra-dev-site
 

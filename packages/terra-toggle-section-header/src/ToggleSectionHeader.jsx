@@ -30,6 +30,7 @@ const propTypes = {
   /**
    * Used to set props and HTML attributes on the underlying section-header.
    */
+  // eslint-disable-next-line react/forbid-prop-types
   sectionHeaderAttrs: PropTypes.object,
   /**
    * Sets the toggle-section-header to be animated when it is opened or closed.
@@ -39,6 +40,10 @@ const propTypes = {
    * Sets the toggle-section-header initial state to open.
    */
   isInitiallyOpen: PropTypes.bool,
+  /**
+   * Sets the background of the section header to transparent.
+   */
+  isTransparent: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -46,6 +51,7 @@ const defaultProps = {
   sectionHeaderAttrs: {},
   isAnimated: false,
   isInitiallyOpen: false,
+  isTransparent: false,
 };
 
 class ToggleSectionHeader extends React.Component {
@@ -99,6 +105,7 @@ class ToggleSectionHeader extends React.Component {
       sectionHeaderAttrs,
       isAnimated,
       isInitiallyOpen,
+      isTransparent,
       onOpen,
       onClose,
       ...customProps
@@ -115,6 +122,7 @@ class ToggleSectionHeader extends React.Component {
           isOpen={this.state.isOpen}
           level={level}
           title={title}
+          isTransparent={isTransparent}
         />
         <Toggle isAnimated={isAnimated} isOpen={this.state.isOpen}>
           {children}

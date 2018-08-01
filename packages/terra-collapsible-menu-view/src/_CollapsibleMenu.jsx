@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Menu from 'terra-menu';
-import styles from './CollapsibleMenuView.scss';
+import styles from './CollapsibleMenuView.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -25,12 +25,6 @@ const propTypes = {
    * Button to display the menu from
    */
   button: PropTypes.element.isRequired,
-};
-
-const defaultProps = {
-  isArrowDisplayed: false,
-  children: [],
-  isOpen: false,
 };
 
 const childContextTypes = {
@@ -133,7 +127,6 @@ class CollapsibleMenu extends React.Component {
 }
 
 CollapsibleMenu.propTypes = propTypes;
-CollapsibleMenu.defaultProps = defaultProps;
 CollapsibleMenu.childContextTypes = childContextTypes;
 CollapsibleMenu.Item = Menu.Item;
 CollapsibleMenu.ItemGroup = Menu.ItemGroup;

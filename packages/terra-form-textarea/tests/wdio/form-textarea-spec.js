@@ -7,7 +7,7 @@ const ignoredA11y = {
 
 describe('Form-Textarea', () => {
   describe('default', () => {
-    beforeEach(() => {
+    before(() => {
       browser.url('/#/raw/tests/terra-form-textarea/form-textarea/default-textarea');
     });
 
@@ -74,7 +74,7 @@ describe('Form-Textarea', () => {
 
 
   describe('Props Populated', () => {
-    beforeEach(() => {
+    before(() => {
       browser.url('/#/raw/tests/terra-form-textarea/form-textarea/populated-textarea');
     });
 
@@ -140,7 +140,7 @@ describe('Form-Textarea', () => {
   });
 
   describe('Invalid', () => {
-    beforeEach(() => {
+    before(() => {
       browser.url('/#/raw/tests/terra-form-textarea/form-textarea/invalid-textarea');
     });
 
@@ -206,7 +206,7 @@ describe('Form-Textarea', () => {
   });
 
   describe('Small Textarea Height Resizing', () => {
-    beforeEach(() => {
+    before(() => {
       browser.url('/#/raw/tests/terra-form-textarea/form-textarea/small-textarea');
     });
 
@@ -215,7 +215,7 @@ describe('Form-Textarea', () => {
   });
 
   describe('Medium Textarea Height Resizing', () => {
-    beforeEach(() => {
+    before(() => {
       browser.url('/#/raw/tests/terra-form-textarea/form-textarea/medium-textarea');
     });
 
@@ -224,7 +224,7 @@ describe('Form-Textarea', () => {
   });
 
   describe('Large Textarea Height Resizing', () => {
-    beforeEach(() => {
+    before(() => {
       browser.url('/#/raw/tests/terra-form-textarea/form-textarea/large-textarea');
     });
 
@@ -233,7 +233,7 @@ describe('Form-Textarea', () => {
   });
 
   describe('Full Size Textarea Height Resizing', () => {
-    beforeEach(() => {
+    before(() => {
       browser.url('/#/raw/tests/terra-form-textarea/form-textarea/full-textarea');
     });
 
@@ -246,6 +246,10 @@ describe('Form-Textarea', () => {
     describe('Resizes when given several rows of input', () => {
       before(() => {
         browser.url('/#/raw/tests/terra-form-textarea/form-textarea/auto-resizable-textarea');
+        browser.execute(() => {
+          // Removes the blinking cursor to prevent screenshot mismatches.
+          document.querySelector('textarea').style.caretColor = 'transparent';
+        });
       });
 
       Terra.should.matchScreenshot('0', { viewports });
@@ -260,6 +264,10 @@ describe('Form-Textarea', () => {
     describe('Does not resize textareas that are non-resizable', () => {
       before(() => {
         browser.url('/#/raw/tests/terra-form-textarea/form-textarea/medium-textarea');
+        browser.execute(() => {
+          // Removes the blinking cursor to prevent screenshot mismatches.
+          document.querySelector('textarea').style.caretColor = 'transparent';
+        });
       });
 
       Terra.should.matchScreenshot('0', { viewports });
@@ -274,6 +282,10 @@ describe('Form-Textarea', () => {
     describe('Blocks autoresizing for when ontouch exists and browser screen is not desktop size', () => {
       before(() => {
         browser.url('/#/raw/tests/terra-form-textarea/form-textarea/auto-resizable-textarea-mobile-on-touch-start');
+        browser.execute(() => {
+          // Removes the blinking cursor to prevent screenshot mismatches.
+          document.querySelector('textarea').style.caretColor = 'transparent';
+        });
       });
 
       Terra.should.matchScreenshot('0', { viewports });
@@ -288,6 +300,10 @@ describe('Form-Textarea', () => {
     describe('Blocks autoresizing for when DocumentTouch exists and browser screen is not desktop size', () => {
       before(() => {
         browser.url('/#/raw/tests/terra-form-textarea/form-textarea/auto-resizable-textarea-mobile-document-touch');
+        browser.execute(() => {
+          // Removes the blinking cursor to prevent screenshot mismatches.
+          document.querySelector('textarea').style.caretColor = 'transparent';
+        });
       });
 
       Terra.should.matchScreenshot('0', { viewports });
@@ -302,6 +318,10 @@ describe('Form-Textarea', () => {
     describe('Blocks autoresizing for when maxTouchPoints exists and browser screen is not desktop size', () => {
       before(() => {
         browser.url('/#/raw/tests/terra-form-textarea/form-textarea/auto-resizable-textarea-mobile-max-touch-points');
+        browser.execute(() => {
+          // Removes the blinking cursor to prevent screenshot mismatches.
+          document.querySelector('textarea').style.caretColor = 'transparent';
+        });
       });
 
       Terra.should.matchScreenshot('0', { viewports });
@@ -316,6 +336,10 @@ describe('Form-Textarea', () => {
     describe('Blocks autoresizing for when msMaxTouchPoints exists and browser screen is not desktop size', () => {
       before(() => {
         browser.url('/#/raw/tests/terra-form-textarea/form-textarea/auto-resizable-textarea-mobile-ms-max-touch-points');
+        browser.execute(() => {
+          // Removes the blinking cursor to prevent screenshot mismatches.
+          document.querySelector('textarea').style.caretColor = 'transparent';
+        });
       });
 
       Terra.should.matchScreenshot('0', { viewports });
@@ -330,7 +354,7 @@ describe('Form-Textarea', () => {
 
   describe('TextareaField', () => {
     describe('Valid TextareaField', () => {
-      beforeEach(() => {
+      before(() => {
         browser.url('/#/raw/tests/terra-form-textarea/form-textarea/textarea-field');
       });
 
@@ -338,7 +362,7 @@ describe('Form-Textarea', () => {
     });
 
     describe('Invalid TextareaField', () => {
-      beforeEach(() => {
+      before(() => {
         browser.url('/#/raw/tests/terra-form-textarea/form-textarea/textarea-field');
         browser.click('#validity-toggle');
       });

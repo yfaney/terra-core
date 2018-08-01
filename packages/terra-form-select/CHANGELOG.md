@@ -3,6 +3,51 @@ ChangeLog
 
 Unreleased
 ----------
+
+4.12.0 - (July 25, 2018)
+------------------
+### Added
+* Add sv and sv-SE translations
+
+4.11.1 - (July 20, 2018)
+------------------
+### Changed
+* Clean up double .module extension on SCSS files
+
+4.11.0 - (July 19, 2018)
+------------------
+### Changed
+* Add .module extension to SCSS file(s)
+
+4.10.0 - (July 17, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+* Formatting changes per eslint v4 update
+* Added tabIndex="0" to role="listbox"
+* Reordered react methods to match preferred linter order
+
+4.9.0 - (July 10, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+### Added
+* A maxHeight prop for setting a custom max height of the dropdown
+
+4.8.0 - (July 3, 2018)
+------------------
+### Added
+* Added CSS style to display the select box-shadow over the toggle border
+* Added CSS custom property to enable theming of disabled state arrow icon
+
+### Fixed
+* Null check the active state before performing findByValue
+
+4.7.0 - (June 28, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+
 ### Added
 * Added change log to the documentation on terra-dev-site
 

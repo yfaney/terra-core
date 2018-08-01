@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 
 import 'terra-base/lib/baseStyles';
-import styles from './Fieldset.scss';
+import styles from './Fieldset.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -24,6 +24,7 @@ const propTypes = {
   /**
    * Attributes to attach to the legend.
    */
+  // eslint-disable-next-line react/forbid-prop-types
   legendAttrs: PropTypes.object,
   /**
    * Determines whether the fieldset is required.
@@ -36,7 +37,9 @@ const defaultProps = {
   required: false,
 };
 
-const Fieldset = ({ children, help, legend, legendAttrs, required, ...customProps }) => {
+const Fieldset = ({
+  children, help, legend, legendAttrs, required, ...customProps
+}) => {
   const fieldsetClasses = cx([
     'fieldset',
     { 'fieldset-required': required },

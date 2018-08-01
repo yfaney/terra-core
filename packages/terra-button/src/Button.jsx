@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
-import styles from './Button.scss';
+import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -104,7 +104,7 @@ const defaultProps = {
 class Button extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { active: false, focused: false, mouseWasClicked: false };
+    this.state = { active: false, focused: false };
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);

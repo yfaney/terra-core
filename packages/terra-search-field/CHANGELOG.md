@@ -4,7 +4,48 @@ Changelog
 Unreleased
 ----------
 ### Changed
+* Changed input to have right border
+
+2.22.0 - (July 26, 2018)
+------------------
+### Added
+* Add inputRefCallback prop
+
+2.21.0 - (July 25, 2018)
+------------------
+### Added
+* Add sv and sv-SE translations
+
+2.20.0 - (July 19, 2018)
+------------------
+### Changed
+* Add .module extension to SCSS file(s)
+
+2.19.0 - (July 17, 2018)
+------------------
+### Added
+* Added more themeable variables
+
+### Changed
+* Minor dependency version bump
+* Formatting changes per eslint v4 update
+
+2.18.0 - (July 10, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+
+2.17.0 - (July 3, 2018)
+------------------
+### Changed
+* Replace legacy Input with the new terra-form-input package
+
+2.16.0 - (June 28, 2018)
+------------------
+### Changed
+* Minor dependency version bump
 * Added clickable text to a few test pages
+
 ### Added
 * Added change log to the documentation on terra-dev-site
 

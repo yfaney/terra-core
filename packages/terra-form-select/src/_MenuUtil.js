@@ -171,8 +171,7 @@ class MenuUtil {
    */
   static findWithStartString(object, string) {
     const option = MenuUtil.flatten(object, true).find(opt => (
-      opt.props.display || '').toLowerCase().startsWith(string.toLowerCase()),
-    );
+      opt.props.display || '').toLowerCase().startsWith(string.toLowerCase()));
     return option ? option.props.value : null;
   }
 
@@ -221,7 +220,7 @@ class MenuUtil {
       return selected === undefined ? options[0].props.value : selected.props.value;
     } else if (searchValue !== state.searchValue) {
       return options[0].props.value;
-    } else if (MenuUtil.findByValue(options, active)) {
+    } else if (active !== null && MenuUtil.findByValue(options, active)) {
       return active;
     }
     return options[0].props.value;

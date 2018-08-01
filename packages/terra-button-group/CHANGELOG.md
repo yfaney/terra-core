@@ -3,8 +3,29 @@ Changelog
 
 Unreleased
 ----------
+
+2.18.0 - (July 19, 2018)
+------------------
 ### Changed
+* Add .module extension to SCSS file(s)
+
+2.17.0 - (July 17, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+* Formatting changes per eslint v4 update
+
+2.16.0 - (July 10, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+
+2.15.0 - (June 28, 2018)
+------------------
+### Changed
+* Minor dependency version bump
 * Removed CSS modules composes call
+
 ### Added
 * Added change log to the documentation on terra-dev-site
 

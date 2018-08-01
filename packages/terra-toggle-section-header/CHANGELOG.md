@@ -4,6 +4,30 @@ ChangeLog
 Unreleased
 ----------
 ### Added
+* Added isTransparent prop to set background to be transparent
+
+1.17.0 - (July 19, 2018)
+------------------
+### Changed
+* Add .module extension to SCSS file(s)
+
+1.16.0 - (July 17, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+* Formatting changes per eslint v4 update
+
+1.15.0 - (July 10, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+
+1.14.0 - (June 28, 2018)
+------------------
+### Changed
+* Minor dependency version bump
+
+### Added
 * Added change log to the documentation on terra-dev-site
 
 1.13.0 - (June 22, 2018)

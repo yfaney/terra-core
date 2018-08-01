@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
-import styles from './Arrange.scss';
+import styles from './Arrange.module.scss';
 
 const alignmentTypes = ['center', 'bottom', 'stretch'];
 const cx = classNames.bind(styles);
@@ -39,14 +39,17 @@ const propTypes = {
   /**
    * The attributes to be set on the fitStart wrapper element
    */
+  // eslint-disable-next-line react/forbid-prop-types
   fitStartAttributes: PropTypes.object,
   /**
    * The attributes to be set on the fill wrapper element
    */
+  // eslint-disable-next-line react/forbid-prop-types
   fillAttributes: PropTypes.object,
   /**
    * The attributes to be set on the fitEnd wrapper element
    */
+  // eslint-disable-next-line react/forbid-prop-types
   fitEndAttributes: PropTypes.object,
 };
 
@@ -62,7 +65,7 @@ const Arrange = ({
   fillAttributes,
   fitEndAttributes,
   ...customProps
-  }) => {
+}) => {
   const fitStartProps = Object.assign({}, fitStartAttributes);
   const fillProps = Object.assign({}, fillAttributes);
   const fitEndProps = Object.assign({}, fitEndAttributes);

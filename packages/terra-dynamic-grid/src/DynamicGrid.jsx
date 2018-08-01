@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import 'terra-base/lib/baseStyles';
 import { grid } from './styles';
 import Region from './Region';
-import styles from './DynamicGrid.scss';
+import styles from './DynamicGrid.module.scss';
 
 const templateShape = {
   /**
@@ -25,6 +25,7 @@ const templateShape = {
   /**
   * Additional CSS properties to apply to the grid.
   */
+  // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,
 };
 

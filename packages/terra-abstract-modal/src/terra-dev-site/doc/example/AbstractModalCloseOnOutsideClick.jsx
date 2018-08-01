@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved, import/extensions
 import AbstractModal from 'terra-abstract-modal/lib/AbstractModal';
-import styles from './ExampleAbstractSize.scss';
+import styles from './ExampleAbstractSize.module.scss';
 
 class AbstractModalCloseOnOutsideClick extends React.Component {
   constructor() {
@@ -33,7 +33,10 @@ class AbstractModalCloseOnOutsideClick extends React.Component {
           onRequestClose={this.handleCloseModal}
           classNameModal={styles['fixed-size']}
         >
-          <div style={{ height: '100%', width: '100%', overflow: 'hidden', backgroundColor: 'lightgreen' }}>
+          <div style={{
+ height: '100%', width: '100%', overflow: 'hidden', backgroundColor: 'lightgreen',
+}}
+          >
             <h1>Modal disable close on outside click</h1>
             <br />
             <p>You can close the modal by:</p>

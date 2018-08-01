@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import FocusTrap from 'focus-trap-react';
 import 'terra-base/lib/baseStyles';
-import styles from './Overlay.scss';
+import styles from './Overlay.module.scss';
 import Container from './OverlayContainer';
 
 const cx = classNames.bind(styles);
@@ -133,7 +133,9 @@ class Overlay extends React.Component {
   }
 
   render() {
-    const { children, isOpen, backgroundStyle, isScrollable, isRelativeToContainer, onRequestClose, ...customProps } = this.props;
+    const {
+      children, isOpen, backgroundStyle, isScrollable, isRelativeToContainer, onRequestClose, ...customProps
+    } = this.props;
     const type = isRelativeToContainer ? 'container' : 'fullscreen';
 
     if (!isOpen) {
@@ -149,16 +151,19 @@ class Overlay extends React.Component {
       customProps.className,
     ]);
 
-    // Disable linter to pass onClick to div element.
-    /* eslint-disable jsx-a11y/no-static-element-interactions */
+    /*
+      tabIndex set to 0 allows screen readers like VoiceOver to read overlay content when its displayed.
+      Key events are added on mount.
+    */
+    /* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-tabindex */
     const overlayComponent = (
-      <div {...customProps} ref={this.setContainer} onClick={this.shouldHandleClick} className={OverlayClassNames} tabIndex="0" >
+      <div {...customProps} ref={this.setContainer} onClick={this.shouldHandleClick} className={OverlayClassNames} tabIndex="0">
         <div className={cx('content')}>
           {children}
         </div>
       </div>
     );
-    /* eslint-enable jsx-a11y/no-static-element-interactions */
+    /* eslint-enable jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-tabindex */
 
     if (isRelativeToContainer) {
       return overlayComponent;

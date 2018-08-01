@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Menu from 'terra-menu';
 import IconCaretDown from 'terra-icon/lib/icon/IconCaretDown';
-import styles from './Tabs.scss';
+import styles from './Tabs.module.scss';
 import TabUtils from './TabUtils';
 
 const cx = classNames.bind(styles);
@@ -93,7 +93,9 @@ class TabMenu extends React.Component {
     let menuActive = false;
 
     React.Children.forEach(this.props.children, (child) => {
-      const { label, customDisplay, icon, isIconOnly, ...otherProps } = child.props;
+      const {
+        label, customDisplay, icon, isIconOnly, ...otherProps
+      } = child.props;
       let isSelected = false;
 
       if (this.props.activeKey === child.key) {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
 import Arrange from 'terra-arrange';
-import styles from './SectionHeader.scss';
+import styles from './SectionHeader.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -29,11 +29,16 @@ const propTypes = {
    * Optionally sets the heading level. One of `1`, `2`, `3`, `4`, `5`, `6`. Default `level=2`.
    */
   level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+  /**
+   * Sets the background of the section header to transparent.
+   */
+  isTransparent: PropTypes.bool,
 };
 
 const defaultProps = {
   onClick: undefined,
   isOpen: false,
+  isTransparent: false,
   level: 2,
 };
 
@@ -82,6 +87,7 @@ class SectionHeader extends React.Component {
       title,
       onClick,
       isOpen,
+      isTransparent,
       level,
       ...customProps
     } = this.props;
@@ -115,12 +121,16 @@ class SectionHeader extends React.Component {
       'section-header',
       { 'is-interactable': onClick },
       { 'is-active': this.state.isActive },
+      { 'is-transparent': isTransparent },
       customProps.className,
     ]);
 
     const Element = `h${level}`;
 
     // allows us to set an onClick on the div
+    // We set key events and role conditionally set if onClick is set
+    // eslint doesn't know about this and so it marks this as a lint error
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     return (
       <div {...attributes} onClick={onClick} className={sectionHeaderClassNames}>

@@ -5,7 +5,7 @@ import Button from 'terra-button';
 import ButtonGroup from 'terra-button-group';
 import 'terra-base/lib/baseStyles';
 import ActionHeaderContainer from './_ActionHeaderContainer';
-import styles from './ActionHeader.scss';
+import styles from './ActionHeader.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -40,11 +40,11 @@ const propTypes = {
    */
   onMinimize: PropTypes.func,
   /**
-   * Callback function for when the next button is clicked. The previous-next button group will not display if neither this or onPrevious are set.
+   * Callback function for when the next button is clicked. The previous-next button group will display if either this or onPrevious is set but the button for the one not set will be disabled.
    */
   onNext: PropTypes.func,
   /**
-   * Callback function for when the previous button is clicked. The previous-next button group will not display if neither this or onNext are set.
+   * Callback function for when the previous button is clicked. The previous-next button group will display if either this or onNext is set but the button for the one not set will be disabled.
    */
   onPrevious: PropTypes.func,
   /**
@@ -84,7 +84,8 @@ const ActionHeader = ({
   onPrevious,
   onNext,
   children,
-  ...customProps }, {
+  ...customProps
+}, {
   intl,
 }) => {
   const backText = intl.formatMessage({ id: 'Terra.actionHeader.back' });
@@ -107,18 +108,34 @@ const ActionHeader = ({
   }
 
   const previousNextButtonGroup = (onPrevious || onNext) ?
-    (<ButtonGroup>
-      <ButtonGroup.Button icon={<span className={cx(['header-icon', 'previous'])} />} text={previousText} onClick={onPrevious} key="ActionHeaderPrevious" />
-      <ButtonGroup.Button icon={<span className={cx(['header-icon', 'next'])} />} text={nextText} onClick={onNext} key="ActionHeaderNext" />
-    </ButtonGroup>) :
+    (
+      <ButtonGroup>
+        <ButtonGroup.Button
+          icon={<span className={cx(['header-icon', 'previous'])} />}
+          text={previousText}
+          onClick={onPrevious}
+          key="ActionHeaderPrevious"
+          isDisabled={onPrevious === undefined}
+        />
+        <ButtonGroup.Button
+          icon={<span className={cx(['header-icon', 'next'])} />}
+          text={nextText}
+          onClick={onNext}
+          key="ActionHeaderNext"
+          isDisabled={onNext === undefined}
+        />
+      </ButtonGroup>
+    ) :
     null;
 
   const leftButtons = (backButton || expandButton || previousNextButtonGroup) ?
-    (<div className={cx('left-buttons')}>
-      {backButton}
-      {expandButton}
-      {previousNextButtonGroup}
-    </div>) :
+    (
+      <div className={cx('left-buttons')}>
+        {backButton}
+        {expandButton}
+        {previousNextButtonGroup}
+      </div>
+    ) :
     null;
 
   const rightButtons = closeButton ? <div className={cx('right-buttons')}>{closeButton}</div> : null;

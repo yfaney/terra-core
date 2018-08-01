@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import AbstractModal from 'terra-abstract-modal';
 import Button from 'terra-button';
 import DateTimeUtils from './DateTimeUtils';
-import styles from './_TimeClarification.scss';
+import styles from './_TimeClarification.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -34,6 +34,10 @@ const propTypes = {
    */
   onRequestClose: PropTypes.func.isRequired,
   /**
+   * Whether the clarification is disabled.
+   */
+  disabled: PropTypes.bool,
+  /**
    * Callback function to let the containing component (e.g. modal) to regain focus.
    */
   releaseFocus: PropTypes.func,
@@ -44,12 +48,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  isOpen: false,
-  isOffsetButtonHidden: false,
-  onDaylightSavingButtonClick: undefined,
-  onStandardTimeButtonClick: undefined,
-  onOffsetButtonClick: undefined,
-  onRequestClose: undefined,
+  disabled: false,
   releaseFocus: undefined,
   requestFocus: undefined,
 };
@@ -123,7 +122,7 @@ class TimeClarification extends React.Component {
       { 'button-offset-hidden': this.props.isOffsetButtonHidden || !this.state.offsetDisplay },
     ]);
 
-    const intl = this.context.intl;
+    const { intl } = this.context;
     const title = intl.formatMessage({ id: 'Terra.dateTimePicker.timeClarification.title' });
     const message = intl.formatMessage({ id: 'Terra.dateTimePicker.timeClarification.message' });
     const daylightSavingButtonLabel = intl.formatMessage({ id: 'Terra.dateTimePicker.timeClarification.button.daylightSaving' });
@@ -168,6 +167,7 @@ class TimeClarification extends React.Component {
           onClick={this.props.onOffsetButtonClick}
           text={this.state.offsetDisplay}
           isCompact
+          isDisabled={this.props.disabled}
         />
       </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved, import/extensions
 import AbstractModal from 'terra-abstract-modal/lib/AbstractModal';
-import styles from './ExampleAbstractSize.scss';
+import styles from './ExampleAbstractSize.module.scss';
 
 class AbstractModalIsOpen extends React.Component {
   constructor() {
@@ -32,7 +32,10 @@ class AbstractModalIsOpen extends React.Component {
           onRequestClose={this.handleCloseModal}
           classNameModal={styles['fixed-size']}
         >
-          <div style={{ height: '100%', width: '100%', overflow: 'hidden', backgroundColor: 'antiquewhite' }}>
+          <div style={{
+ height: '100%', width: '100%', overflow: 'hidden', backgroundColor: 'antiquewhite',
+}}
+          >
             <h1>Default Modal</h1>
             <br />
             <p>You can close the modal by:</p>

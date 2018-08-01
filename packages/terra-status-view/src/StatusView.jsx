@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
 import Divider from 'terra-divider';
-import styles from './StatusView.scss';
+import styles from './StatusView.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -76,7 +76,6 @@ const contextTypes = {
 };
 
 class StatusView extends React.Component {
-
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -144,14 +143,14 @@ class StatusView extends React.Component {
 
   render() {
     const {
-    children,
-    customGlyph,
-    isAlignedTop,
-    isGlyphHidden,
-    message,
-    title,
-    variant,
-    ...customProps
+      children,
+      customGlyph,
+      isAlignedTop,
+      isGlyphHidden,
+      message,
+      title,
+      variant,
+      ...customProps
     } = this.props;
 
     const { intl } = this.context;

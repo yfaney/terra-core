@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
-import styles from './RadioField.scss';
+import styles from './RadioField.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -42,6 +42,7 @@ const propTypes = {
   /**
    * Attributes to attach to the legend.
    */
+  // eslint-disable-next-line react/forbid-prop-types
   legendAttrs: PropTypes.object,
   /**
    * Whether or not the field is required.
@@ -61,7 +62,6 @@ const defaultProps = {
   isInline: false,
   isInvalid: false,
   isLegendHidden: false,
-  legend: null,
   legendAttrs: {},
   required: false,
   showOptional: false,
@@ -105,13 +105,15 @@ const RadioField = (props, { intl }) => {
 
   const legendGroup = (
     <legend className={cx(['legend-group', { 'legend-group-hidden': isLegendHidden }])}>
-      {<div {...legendAttrs} className={legendClassNames}>
-        {isInvalid && <span className={cx('error-icon')} />}
-        {required && (isInvalid || !hideRequired) && <span className={cx('required')}>*</span>}
-        {legend}
-        {required && !isInvalid && hideRequired && <span className={cx('required-hidden')}>*</span>}
-        {showOptional && !required && <span className={cx('optional')}>{intl.formatMessage({ id: 'Terra.form.field.optional' })}</span>}
-      </div>}
+      {
+        <div {...legendAttrs} className={legendClassNames}>
+          {isInvalid && <span className={cx('error-icon')} />}
+          {required && (isInvalid || !hideRequired) && <span className={cx('required')}>*</span>}
+          {legend}
+          {required && !isInvalid && hideRequired && <span className={cx('required-hidden')}>*</span>}
+          {showOptional && !required && <span className={cx('optional')}>{intl.formatMessage({ id: 'Terra.form.field.optional' })}</span>}
+        </div>
+      }
       {!isInvalid && <span className={cx('error-icon-hidden')} />}
     </legend>
   );

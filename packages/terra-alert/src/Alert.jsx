@@ -9,7 +9,7 @@ import IconInformation from 'terra-icon/lib/icon/IconInformation';
 import IconSuccess from 'terra-icon/lib/icon/IconSuccess';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
-import styles from './Alert.scss';
+import styles from './Alert.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -103,20 +103,18 @@ const contextTypes = {
   },
 };
 
-const Alert = (
-  {
-    type,
-    children,
-    title,
-    customIcon,
-    customStatusColor,
-    onDismiss,
-    action,
-    ...customProps
-  }, {
-    intl,
-  },
-) => {
+const Alert = ({
+  type,
+  children,
+  title,
+  customIcon,
+  customStatusColor,
+  onDismiss,
+  action,
+  ...customProps
+}, {
+  intl,
+}) => {
   const defaultTitle = type === AlertTypes.CUSTOM ? '' : intl.formatMessage({ id: `Terra.alert.${type}` });
   const attributes = Object.assign({}, customProps);
   const narrowAlertClassNames = cx([

@@ -2,13 +2,12 @@ import React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import IconEllipses from 'terra-icon/lib/icon/IconEllipses';
 import 'terra-base/lib/baseStyles';
 import CollapsibleMenuViewItem from './CollapsibleMenuViewItem';
 import CollapsibleMenuViewItemGroup from './CollapsibleMenuViewItemGroup';
 import CollapsibleMenuViewToggle from './CollapsibleMenuViewToggle';
 import CollapsibleMenuViewDivider from './CollapsibleMenuViewDivider';
-import styles from './CollapsibleMenuView.scss';
+import styles from './CollapsibleMenuView.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -45,24 +44,35 @@ class CollapsibleMenuView extends React.Component {
     super(props);
     this.setContainer = this.setContainer.bind(this);
     this.setMenuButton = this.setMenuButton.bind(this);
+    this.resetCache = this.resetCache.bind(this);
     this.handleResize = this.handleResize.bind(this);
-    this.state = {
-      hiddenStartIndex: -1,
-      menuHidden: false,
-      isCalculating: true,
-    };
+    this.resetCache();
   }
 
   componentDidMount() {
     this.resizeObserver = new ResizeObserver((entries) => {
-      // Resetting the state so that all elements will be rendered face-up for width calculations
-      this.setState({ hiddenStartIndex: -1, menuHidden: false, isCalculating: true });
-      this.handleResize(entries[0].contentRect.width);
+      this.contentWidth = entries[0].contentRect.width;
+      if (!this.isCalculating) {
+        this.animationFrameID = window.requestAnimationFrame(() => {
+          // Resetting the cache so that all elements will be rendered face-up for width calculations
+          this.resetCache();
+          this.forceUpdate();
+        });
+      }
     });
+    this.handleResize(this.contentWidth);
     this.resizeObserver.observe(this.container);
   }
 
+  componentDidUpdate() {
+    if (this.isCalculating) {
+      this.isCalculating = false;
+      this.handleResize(this.contentWidth);
+    }
+  }
+
   componentWillUnmount() {
+    window.cancelAnimationFrame(this.animationFrameID);
     this.resizeObserver.disconnect(this.container);
     this.container = null;
   }
@@ -75,6 +85,13 @@ class CollapsibleMenuView extends React.Component {
   setMenuButton(node) {
     if (node === null) { return; }
     this.menuButton = node;
+  }
+
+  resetCache() {
+    this.animationFrameID = null;
+    this.hiddenStartIndex = -1;
+    this.isCalculating = true;
+    this.menuHidden = false;
   }
 
   handleResize(width) {
@@ -101,28 +118,34 @@ class CollapsibleMenuView extends React.Component {
       }
     }
 
-    this.setState({ menuHidden, hiddenStartIndex, isCalculating: false });
+    if (this.menuHidden !== menuHidden || this.hiddenStartIndex !== hiddenStartIndex) {
+      this.menuHidden = menuHidden;
+      this.hiddenStartIndex = hiddenStartIndex;
+      this.forceUpdate();
+    }
   }
 
   render() {
-    const { children, boundingRef, menuWidth, ...customProps } = this.props;
-    const intl = this.context.intl;
+    const {
+      children, boundingRef, menuWidth, ...customProps
+    } = this.props;
+    const { intl } = this.context;
     const ellipsesText = intl.formatMessage({ id: 'Terra.collapsibleMenuView.more' });
     const visibleChildren = React.Children.toArray(children);
 
     let hiddenChildren = null;
-    if (this.state.hiddenStartIndex >= 0) {
-      hiddenChildren = visibleChildren.splice(this.state.hiddenStartIndex);
+    if (this.hiddenStartIndex >= 0) {
+      hiddenChildren = visibleChildren.splice(this.hiddenStartIndex);
     }
 
     const collapsibleMenuViewClassName = cx([
       'collapsible-menu-view',
-      { 'is-calculating': this.state.isCalculating },
+      { 'is-calculating': this.isCalculating },
       customProps.className,
     ]);
     const menuButtonClassName = cx([
       'menu-button',
-      { hidden: this.state.menuHidden },
+      { hidden: this.menuHidden },
     ]);
 
     return (
@@ -131,7 +154,7 @@ class CollapsibleMenuView extends React.Component {
         <div className={menuButtonClassName} ref={this.setMenuButton}>
           <CollapsibleMenuViewItem
             data-collapsible-menu-toggle
-            icon={<IconEllipses />}
+            icon={<span className={cx('menu-button-icon')} />}
             subMenuItems={hiddenChildren}
             boundingRef={boundingRef}
             menuWidth={menuWidth}

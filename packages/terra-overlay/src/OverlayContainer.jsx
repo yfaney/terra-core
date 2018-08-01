@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import 'terra-base/lib/baseStyles';
-import styles from './Overlay.scss';
+import styles from './Overlay.module.scss';
 
 const cx = classNames.bind(styles);
 
 const propTypes = {
- /**
+/**
  * The overlay and the elements the overlay should hide when overlay isRelativeToContainer and isOpen.
  */
   children: PropTypes.node,
