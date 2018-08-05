@@ -18,6 +18,10 @@ const propTypes = {
    */
   minWidth: PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'huge']),
   /**
+   * Function callback for the ref of the th.
+   */
+  refCallback: PropTypes.func,
+  /**
    * Whether or not data in table is sorted (asc, desc)
    */
   sort: PropTypes.oneOf(['asc', 'desc']),
@@ -33,6 +37,7 @@ const iconUp = <IconUp />;
 const TableHeaderCell = ({
   content,
   minWidth,
+  refCallback,
   sort,
   ...customProps
 }) => {
@@ -53,7 +58,7 @@ const TableHeaderCell = ({
   }
 
   return (
-    <th {...customProps} data-terra-table-header-cell className={contentClassName} {...dataSort}>
+    <th {...customProps} data-terra-table-header-cell className={contentClassName} {...dataSort} ref={refCallback}>
       {content}
       {sortIndicator}
     </th>

@@ -7,10 +7,15 @@ const propTypes = {
    * The children passed to the component
    */
   children: PropTypes.node.isRequired,
+  /**
+   * Function callback for the ref of the thead.
+   */
+  refCallback: PropTypes.func,
 };
 
 const TableHeader = ({
   children,
+  refCallback,
   ...customProps
 }) => {
   let childrenArray = React.Children.toArray(children);
@@ -21,7 +26,7 @@ const TableHeader = ({
   }
 
   return (
-    <thead {...customProps}>
+    <thead {...customProps} ref={refCallback}>
       <tr>
         {childrenArray}
       </tr>
