@@ -54,7 +54,7 @@ function getNumberOfColumns(children) {
     // If the child is a TableRow and it has children, then return the count of the TableRow's children.
     // Assumptions: Number of children will be equal to number of columns. Children of TableRow should be TableCell
     if (childArray[i].type === TableRow && childArray[i].props.children !== null) {
-      cellCount = React.Children.count(childArray[i].props.children)
+      const cellCount = React.Children.count(childArray[i].props.children)
       if (cellCount > count) {
         count = cellCount;
       }
