@@ -58,7 +58,9 @@ function getNumberOfColumns(children) {
       if (cellCount > count) {
         count = cellCount;
       }
-      return count >= 16 ? 16 : count;
+      if (count >= 16) {
+        return 16;
+      }
     }
   }
   return count;
