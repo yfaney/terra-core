@@ -3,6 +3,16 @@ ChangeLog
 
 Unreleased
 ----------
+### Removed
+* Removed unnecessary onChange handler call in Optional RadioField example
+
+### Changed
+* Changed the questions to be accurate for the options in the RadioField examples
+
+2.20.0 - (August 1, 2018)
+------------------
+### Changed
+* Minor dependency version bump
 
 2.19.0 - (July 26, 2018)
 ------------------
