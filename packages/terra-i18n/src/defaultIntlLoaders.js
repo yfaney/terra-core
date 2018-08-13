@@ -1,121 +1,53 @@
-const loadArIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/ar.js'),
-    'ar-intl-local',
-  );
+const loadArIntl = () => import(/* webpackChunkName: "ar-intl-local" */ 'intl/locale-data/jsonp/ar.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/ar');
 
-const loadEnIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/en.js'),
-    'en-intl-local',
-  );
+const loadEnIntl = () => import(/* webpackChunkName: "en-intl-local'" */ 'intl/locale-data/jsonp/en.js').then((module) => {
+}).catch (error => 'An error occurred while loading intl/locale-data/jsonp/en');
 
-const loadEnGBIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/en-GB.js'),
-    'en-GB-intl-local',
-  );
+const loadEnGBIntl = () => import(/* webpackChunkName: "en-GB-intl-local" */ 'intl/locale-data/jsonp/en-GB.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/en-GB');
 
-const loadEnUSIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/en-US.js'),
-    'en-US-intl-local',
-  );
+const loadEnUSIntl = () => import(/* webpackChunkName: "en-US-intl-local" */ 'intl/locale-data/jsonp/en-US.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/en-US');
 
-const loadDeIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/de.js'),
-    'de-intl-local',
-  );
+const loadDeIntl = () => import(/* webpackChunkName: "de-intl-local" */ 'intl/locale-data/jsonp/de.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/de');
 
-const loadPtIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/pt.js'),
-    'pt-intl-local',
-  );
+const loadPtIntl = () => import(/* webpackChunkName: "pt-intl-local" */ 'intl/locale-data/jsonp/pt.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/pt');
 
-const loadPtBRIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/pt-BR.js'),
-    'pt-BR-intl-local',
-  );
+const loadPtBRIntl = () => import(/* webpackChunkName: "pt-BR-intl-local" */ 'intl/locale-data/jsonp/pt-BR.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/pt-BR');
 
-const loadFrIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/fr.js'),
-    'fr-intl-local',
-  );
+const loadFrIntl = () => import(/* webpackChunkName: "fr-intl-local" */ 'intl/locale-data/jsonp/fr.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/fr');
 
-const loadFrFRIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/fr-FR.js'),
-    'fr-FR-intl-local',
-  );
+const loadFrFRIntl = () => import(/* webpackChunkName: "fr-FR-intl-local" */ 'intl/locale-data/jsonp/fr-FR.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/fr-FR');
 
-const loadEsIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/es.js'),
-    'es-intl-local',
-  );
+const loadEsIntl = () => import(/* webpackChunkName: "es-intl-local" */ 'intl/locale-data/jsonp/es.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/es');
 
-const loadEsUSIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/es-US.js'),
-    'es-US-intl-local',
-  );
+const loadEsUSIntl = () => import(/* webpackChunkName: "es-US-intl-local" */ 'intl/locale-data/jsonp/es-US.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/es-US');
 
-const loadEsESIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/es-ES.js'),
-    'es-ES-intl-local',
-  );
+const loadEsESIntl = () => import(/* webpackChunkName: "es-ES-intl-local" */ 'intl/locale-data/jsonp/es-ES.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/es-ES');
 
-const loadFiFIIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/fi-FI.js'),
-    'fi-FI-intl-local',
-  );
+const loadFiFIIntl = () => import(/* webpackChunkName: "fi-FI-intl-local" */ 'intl/locale-data/jsonp/fi-FI.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/fi-FI');
 
-const loadNlIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/nl.js'),
-    'nl-intl-local',
-  );
+const loadNlIntl = () => import(/* webpackChunkName: "nl-intl-local" */ 'intl/locale-data/jsonp/nl.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/nl');
 
-const loadNlBEIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/nl-BE.js'),
-    'nl-BE-intl-local',
-  );
+const loadNlBEIntl = () => import(/* webpackChunkName: "nl-BE-intl-local" */ 'intl/locale-data/jsonp/nl-BE.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/nl-BE');
 
-const loadSvIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/sv.js'),
-    'sv-intl-local',
-  );
+const loadSvIntl = () => import(/* webpackChunkName: "sv-intl-local" */ 'intl/locale-data/jsonp/sv.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/sv');
 
-const loadSvSEIntl = () =>
-  require.ensure(
-    [],
-    require => require('intl/locale-data/jsonp/sv-SE.js'),
-    'sv-SE-intl-local',
-  );
+const loadSvSEIntl = () => import(/* webpackChunkName: "sv-SE-intl-local" */ 'intl/locale-data/jsonp/sv-SE.js').then((module) => {
+}).catch(error => 'An error occurred while loading intl/locale-data/jsonp/sv-SE');
 
 const intlLoaders = {
   ar: loadArIntl,

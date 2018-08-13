@@ -1,138 +1,53 @@
-const loadArTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('ar.js');
-    callback.call(scope, i18n);
-  }, 'ar-translations');
-};
+const loadArTranslation = () => import(/* webpackChunkName: "ar-translations" */ 'ar.js').then((module) => {
+}).catch(error => 'An error occurred while loading ar.js');
 
-const loadEnTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('en.js');
-    callback.call(scope, i18n);
-  }, 'en-translations');
-};
+const loadEnTranslation = () => import(/* webpackChunkName: "en-translations" */ 'en.js').then((module) => {
+}).catch(error => 'An error occurred while loading en.js');
 
-const loadEnGBTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('en-GB.js');
-    callback.call(scope, i18n);
-  }, 'en-GB-translations');
-};
+const loadEnGBTranslation = () => import(/* webpackChunkName: "en-GB-translations" */ 'en-GB.js').then((module) => {
+}).catch(error => 'An error occurred while loading en-GB.js');
 
-const loadEnUSTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('en-US.js');
-    callback.call(scope, i18n);
-  }, 'en-US-translations');
-};
+const loadEnUSTranslation = () => import(/* webpackChunkName: "en-US-translations" */ 'en-US.js').then((module) => {
+}).catch(error => 'An error occurred while loading en-US.js');
 
-const loadDeTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('de.js');
-    callback.call(scope, i18n);
-  }, 'de-translations');
-};
+const loadDeTranslation = () => import(/* webpackChunkName: "de-translations" */ 'de.js').then((module) => {
+}).catch(error => 'An error occurred while loading de.js');
 
-const loadPtTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('pt.js');
-    callback.call(scope, i18n);
-  }, 'pt-translations');
-};
+const loadPtTranslation = () => import(/* webpackChunkName: "pt-translations" */ 'pt.js').then((module) => {
+}).catch(error => 'An error occurred while loading pt.js');
 
-const loadPtBRTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('pt-BR.js');
-    callback.call(scope, i18n);
-  }, 'pt-BR-translations');
-};
+const loadPtBRTranslation = () => import(/* webpackChunkName: "pt-BR-translations" */ 'pt-BR.js').then((module) => {
+}).catch(error => 'An error occurred while loading pt-BR.js');
 
-const loadFrTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('fr.js');
-    callback.call(scope, i18n);
-  }, 'fr-translations');
-};
+const loadFrTranslation = () => import(/* webpackChunkName: "fr-translations" */ 'fr.js').then((module) => {
+}).catch(error => 'An error occurred while loading fr.js');
 
-const loadFrFRTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('fr-FR.js');
-    callback.call(scope, i18n);
-  }, 'fr-FR-translations');
-};
+const loadFrFRTranslation = () => import(/* webpackChunkName: "fr-FR-translations" */ 'fr-FR.js').then((module) => {
+}).catch(error => 'An error occurred while loading fr-FR.js');
 
-const loadEsTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('es.js');
-    callback.call(scope, i18n);
-  }, 'es-translations');
-};
+const loadEsTranslation = () => import(/* webpackChunkName: "es-translations" */ 'es.js').then((module) => {
+}).catch(error => 'An error occurred while loading es.js');
 
-const loadEsUSTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('es-US.js');
-    callback.call(scope, i18n);
-  }, 'es-US-translations');
-};
+const loadEsUSTranslation = () => import(/* webpackChunkName: "es-US-translations" */ 'es-US.js').then((module) => {
+}).catch(error => 'An error occurred while loading es-US.js');
 
-const loadEsESTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('es-ES.js');
-    callback.call(scope, i18n);
-  }, 'es-ES-translations');
-};
+const loadEsESTranslation = () => import(/* webpackChunkName: "es-ES-translations" */ 'es-ES.js').then((module) => {
+}).catch(error => 'An error occurred while loading es-ES.js');
 
-const loadFiFITranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('fi-FI.js');
-    callback.call(scope, i18n);
-  }, 'fi-FI-translations');
-};
+const loadFiFITranslation = () => import(/* webpackChunkName: "fi-FI-translations" */ 'fi-FI.js').then((module) => {
+}).catch(error => 'An error occurred while loading fi-FI.js');
 
-const loadNlTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('nl.js');
-    callback.call(scope, i18n);
-  }, 'nl-translations');
-};
+const loadNlTranslation = () => import(/* webpackChunkName: "nl-translations" */ 'nl.js').then((module) => {
+}).catch(error => 'An error occurred while loading nl.js');
 
-const loadNlBETranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('nl-BE.js');
-    callback.call(scope, i18n);
-  }, 'nl-BE-translations');
-};
+const loadNlBETranslation = () => import(/* webpackChunkName: "nl-BR-translations" */ 'nl-BE.js').then((module) => {
+}).catch(error => 'An error occurred while loading nl-BE.js');
 
-const loadSvTranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('sv.js');
-    callback.call(scope, i18n);
-  }, 'sv-translations');
-};
+const loadSvTranslation = () => import(/* webpackChunkName: "sv-translations" */ 'sv.js').then((module) => {
+}).catch(error => 'An error occurred while loading sv.js');
 
-const loadSvSETranslation = (callback, scope) => {
-  require.ensure([], (require) => {
-    // eslint-disable-next-line
-    const i18n = require('sv-SE.js');
-    callback.call(scope, i18n);
-  }, 'sv-SE-translations');
-};
+const loadSvSETranslation = () => import(/* webpackChunkName: "sv-SE-translations" */ 'sv-SE.js').then((module) => {
+}).catch(error => 'An error occurred while loading sv-SE.js');
 
 const translationLoaders = {
   ar: loadArTranslation,
