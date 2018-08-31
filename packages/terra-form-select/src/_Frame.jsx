@@ -144,9 +144,18 @@ class Frame extends React.Component {
   }
 
   getDisplay() {
-    const { hasSearchChanged, searchValue } = this.state;
     const {
-      disabled, display, placeholder, variant,
+      activedescendant,
+      hasSearchChanged,
+      searchValue,
+      isOpen,
+    } = this.state;
+
+    const {
+      disabled,
+      display,
+      placeholder,
+      variant,
     } = this.props;
 
     const inputAttrs = {
@@ -155,13 +164,11 @@ class Frame extends React.Component {
       ref: this.setInput,
       onChange: this.handleSearch,
       onMouseDown: this.handleInputMouseDown,
+      type: 'text',
       role: 'combobox',
-      'aria-haspopup': 'true',
-      'aria-expanded': this.state.isOpen,
       'aria-label': 'search',
-      'aria-controls': this.state.isOpen ? 'terra-select-menu' : undefined,
-      'aria-owns': this.state.isOpen ? 'terra-select-menu' : undefined,
-      'aria-activedescendant': this.state.isOpen ? this.state.activedescendant : undefined,
+      'aria-controls': isOpen ? 'terra-select-menu' : undefined,
+      'aria-activedescendant': activedescendant,
       className: cx('search-input', { 'is-hidden': Util.shouldHideSearch(this.props, this.state) }),
     };
 
@@ -195,6 +202,7 @@ class Frame extends React.Component {
       isPositioned: false,
       hasSearchChanged: false,
       searchValue: '',
+      activedescendant: undefined,
     });
 
     // Tags and Comboboxes will select the current search value when the component loses focus.
@@ -390,18 +398,8 @@ class Frame extends React.Component {
     ]);
 
     return (
-      // This warns that a combobox role requires a tab index.
-      // The linter is unable to detect the tab index returned from a function.
-      /* eslint-disable-next-line jsx-a11y/aria-activedescendant-has-tabindex */
       <div
         {...customProps}
-        role="combobox"
-        aria-controls={this.state.isOpen ? 'terra-select-menu' : undefined}
-        aria-disabled={!!disabled}
-        aria-expanded={!!this.state.isOpen}
-        aria-haspopup="true"
-        aria-owns={this.state.isOpen ? 'terra-select-menu' : undefined}
-        aria-activedescendant={this.state.isOpen ? this.state.activedescendant : undefined}
         className={selectClasses}
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}
@@ -409,9 +407,9 @@ class Frame extends React.Component {
         onMouseDown={this.handleMouseDown}
         tabIndex={Util.tabIndex(this.props)}
         ref={(select) => { this.select = select; }}
+        {...Util.ariaAttributes(this.props, this.state)}
       >
-        {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
-        <div role="textbox" className={cx('display')} onMouseDown={this.openDropdown}>
+        <div className={cx('display')} onMouseDown={this.openDropdown}>
           {this.getDisplay()}
         </div>
         <div className={cx('toggle')} onMouseDown={this.toggleDropdown}>

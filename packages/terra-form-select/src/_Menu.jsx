@@ -280,16 +280,14 @@ class Menu extends React.Component {
 
   render() {
     return (
-      <ul
+      <div
         role="listbox"
-        className={cx('menu')}
         id="terra-select-menu"
-        aria-expanded="true"
+        className={cx('menu')}
         ref={(menu) => { this.menu = menu; }}
-        tabIndex="0"
       >
         {this.clone(this.state.children)}
-      </ul>
+      </div>
     );
   }
 }

@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Option should render a default Option 1`] = `
-<li
+<div
   aria-disabled={false}
+  aria-selected={false}
   className="option is-default"
   disabled={false}
   role="option"
@@ -12,12 +13,13 @@ exports[`Option should render a default Option 1`] = `
   >
     display
   </span>
-</li>
+</div>
 `;
 
 exports[`Option should render a disabled Option 1`] = `
-<li
+<div
   aria-disabled={true}
+  aria-selected={false}
   className="option is-default is-disabled"
   disabled={true}
   role="option"
@@ -27,5 +29,5 @@ exports[`Option should render a disabled Option 1`] = `
   >
     display
   </span>
-</li>
+</div>
 `;

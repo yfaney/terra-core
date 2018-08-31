@@ -2,6 +2,37 @@ import { Variants } from './_constants';
 
 class FrameUtil {
   /**
+   * Returns the appropriate aria attributes for screen readers.
+   * @param {Object} props - The component props.
+   * @param {Object} state - The component state.
+   * @return {Object} - A hash containing acessible aria attributes.
+   */
+  static ariaAttributes(props, state) {
+    const { disabled, variant } = props;
+    const { activedescendant, isOpen } = state;
+
+    const aria = {
+      'aria-haspopup': true,
+      role: variant === Variants.DEFAULT ? 'button' : 'combobox',
+    };
+
+    if (isOpen) {
+      aria['aria-expanded'] = true;
+      aria['aria-owns'] = 'terra-select-menu';
+    }
+
+    if (isOpen && variant === Variants.DEFAULT) {
+      aria['aria-activedescendant'] = activedescendant;
+    }
+
+    if (disabled) {
+      aria['aria-disabled'] = true;
+    }
+
+    return aria;
+  }
+
+  /**
    * Returns the dropdown style.
    * @param {Object} props - The component props.
    * @param {Object} state - The component state.

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OptGroup should render a default Option 1`] = `
-<li
+<div
   className="opt-group"
 >
   <div
@@ -9,8 +9,8 @@ exports[`OptGroup should render a default Option 1`] = `
   >
     label
   </div>
-  <ul
+  <div
     className="options"
   />
-</li>
+</div>
 `;

@@ -54,17 +54,17 @@ const Option = ({
   ]);
 
   return (
-    <li
+    <div
       {...customProps}
       role="option"
       disabled={disabled}
       className={optionClassNames}
-      aria-selected={isSelected}
-      aria-disabled={disabled}
+      aria-selected={!!isActive}
+      aria-disabled={!!disabled}
     >
       {(isCheckable || isAddOption) && <span className={cx('icon')} />}
       <span className={cx('display')}>{display}</span>
-    </li>
+    </div>
   );
 };
 
