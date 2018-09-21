@@ -1,31 +1,36 @@
-/* global before, browser, Terra */
 const {
-  viewports,
   withActionsThemeables,
   withoutActionsThemeables,
 } = require('./common');
 
-describe('CenteredActionFooter', () => {
-  describe('Empty', () => {
-    beforeEach(() => browser.url('/#/raw/tests/terra-action-footer/action-footer/empty-centered-action-footer'));
+const formFactor = browser.options.formFactor;
+const viewports = formFactor ? Terra.viewports(formFactor) : Terra.viewports('small', 'medium');
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-    Terra.should.themeEachCustomProperty(withoutActionsThemeables);
-  });
+viewports.forEach((viewport) => {
+  describe('CenteredActionFooter', () => {
+    before(() => !formFactor ? browser.setViewportSize(viewport) : null);
+ 
+    describe('Empty', () => {
+      beforeEach(() => browser.url('/#/raw/tests/terra-action-footer/action-footer/empty-centered-action-footer'));
 
-  describe('Multiple Actions', () => {
-    beforeEach(() => browser.url('/#/raw/tests/terra-action-footer/action-footer/multiple-action-centered-action-footer'));
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+      Terra.should.themeEachCustomProperty(withoutActionsThemeables);
+    });
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-    Terra.should.themeEachCustomProperty(withActionsThemeables);
-  });
+    describe('Multiple Actions', () => {
+      beforeEach(() => browser.url('/#/raw/tests/terra-action-footer/action-footer/multiple-action-centered-action-footer'));
 
-  describe('Single Action', () => {
-    before(() => browser.url('/#/raw/tests/terra-action-footer/action-footer/single-action-centered-action-footer'));
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+      Terra.should.themeEachCustomProperty(withActionsThemeables);
+    });
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
+    describe('Single Action', () => {
+      before(() => browser.url('/#/raw/tests/terra-action-footer/action-footer/single-action-centered-action-footer'));
+
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+    });
   });
 });

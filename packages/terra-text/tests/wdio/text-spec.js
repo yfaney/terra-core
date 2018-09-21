@@ -1,58 +1,62 @@
-/* global before, browser, Terra */
-const viewports = Terra.viewports('medium');
+const formFactor = browser.options.formFactor;
+const viewports = formFactor ? Terra.viewports(formFactor) : Terra.viewports('medium');
 
-describe('Text', () => {
-  describe('Default', () => {
-    before(() => browser.url('/#/raw/tests/terra-text/text/default-text'));
+viewports.forEach((viewport) => {
+  describe('Text', () => {
+    before(() => !formFactor ? browser.setViewportSize(viewport) : null);
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-  });
+    describe('Default', () => {
+      before(() => browser.url('/#/raw/tests/terra-text/text/default-text'));
 
-  describe('Color', () => {
-    before(() => browser.url('/#/raw/tests/terra-text/text/text-color'));
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+    });
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-  });
+    describe('Color', () => {
+      before(() => browser.url('/#/raw/tests/terra-text/text/text-color'));
 
-  describe('Italics', () => {
-    before(() => browser.url('/#/raw/tests/terra-text/text/text-italics'));
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+    });
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-  });
+    describe('Italics', () => {
+      before(() => browser.url('/#/raw/tests/terra-text/text/text-italics'));
 
-  describe('Font Size', () => {
-    before(() => browser.url('/#/raw/tests/terra-text/text/text-font-size'));
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+    });
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-  });
+    describe('Font Size', () => {
+      before(() => browser.url('/#/raw/tests/terra-text/text/text-font-size'));
 
-  describe('Visually Hidden', () => {
-    before(() => browser.url('/#/raw/tests/terra-text/text/text-visually-hidden'));
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+    });
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-  });
+    describe('Visually Hidden', () => {
+      before(() => browser.url('/#/raw/tests/terra-text/text/text-visually-hidden'));
 
-  describe('Visual Props', () => {
-    before(() => browser.url('/#/raw/tests/terra-text/text/text-visual-props'));
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+    });
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-  });
+    describe('Visual Props', () => {
+      before(() => browser.url('/#/raw/tests/terra-text/text/text-visual-props'));
 
-  describe('Weight', () => {
-    before(() => browser.url('/#/raw/tests/terra-text/text/text-weight'));
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+    });
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-  });
+    describe('Weight', () => {
+      before(() => browser.url('/#/raw/tests/terra-text/text/text-weight'));
 
-  describe('Line-height calculated on text font size when parent has a different font size.', () => {
-    before(() => browser.url('/#/raw/tests/terra-text/text/text-line-height'));
-    Terra.should.matchScreenshot();
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+    });
+
+    describe('Line-height calculated on text font size when parent has a different font size.', () => {
+      before(() => browser.url('/#/raw/tests/terra-text/text/text-line-height'));
+      Terra.should.matchScreenshot();
+    });
   });
 });

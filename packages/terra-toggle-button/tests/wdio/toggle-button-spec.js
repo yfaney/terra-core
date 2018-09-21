@@ -1,173 +1,176 @@
-/* global before, browser, Terra */
+const formFactor = browser.options.formFactor;
+const viewports = formFactor ? Terra.viewports(formFactor) : Terra.viewports('medium');
 
-describe('Toggle Button', () => {
-  before(() => browser.setViewportSize(Terra.viewports('medium')[0]));
+viewports.forEach((viewport) => {
+  describe('Toggle Button', () => {
+    before(() => !formFactor ? browser.setViewportSize(viewport) : null);
 
-  describe('Default', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/default-toggle-button'));
+    describe('Default', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/default-toggle-button'));
 
-    Terra.should.matchScreenshot('closed');
-    Terra.should.beAccessible();
+      Terra.should.matchScreenshot('closed');
+      Terra.should.beAccessible();
 
 
-    it('should open the button', () => {
-      browser.click('button');
+      it('should open the button', () => {
+        browser.click('button');
 
-      // Ensures the on hover button styling is not displayed
-      browser.click('p*=Lorem');
+        // Ensures the on hover button styling is not displayed
+        browser.click('p*=Lorem');
+      });
+
+      Terra.should.matchScreenshot('opened');
+      Terra.should.beAccessible();
     });
 
-    Terra.should.matchScreenshot('opened');
-    Terra.should.beAccessible();
-  });
+    describe('Icon Only', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/icon-only'));
 
-  describe('Icon Only', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/icon-only'));
+      it('should open the button', () => {
+        browser.click('button');
 
-    it('should open the button', () => {
-      browser.click('button');
+        // Ensures the on hover button styling is not displayed
+        browser.click('p*=Lorem');
+      });
 
-      // Ensures the on hover button styling is not displayed
-      browser.click('p*=Lorem');
+      Terra.should.matchScreenshot('opened');
+      Terra.should.beAccessible();
     });
 
-    Terra.should.matchScreenshot('opened');
-    Terra.should.beAccessible();
-  });
+    describe('Custom Icon', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/custom-icon'));
 
-  describe('Custom Icon', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/custom-icon'));
+      it('should open the button', () => {
+        browser.click('button');
 
-    it('should open the button', () => {
-      browser.click('button');
+        // Ensures the on hover button styling is not displayed
+        browser.click('p*=Lorem');
+      });
 
-      // Ensures the on hover button styling is not displayed
-      browser.click('p*=Lorem');
+      Terra.should.matchScreenshot('opened');
+      Terra.should.beAccessible();
     });
 
-    Terra.should.matchScreenshot('opened');
-    Terra.should.beAccessible();
-  });
+    describe('Customized Button', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/customized-button-toggle-button'));
 
-  describe('Customized Button', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/customized-button-toggle-button'));
+      it('should open the button', () => {
+        browser.click('button');
 
-    it('should open the button', () => {
-      browser.click('button');
+        // Ensures the on hover button styling is not displayed
+        browser.click('p*=Lorem');
+      });
 
-      // Ensures the on hover button styling is not displayed
-      browser.click('p*=Lorem');
+      Terra.should.matchScreenshot('opened');
+      Terra.should.beAccessible();
     });
 
-    Terra.should.matchScreenshot('opened');
-    Terra.should.beAccessible();
-  });
+    describe('Closed Button Text', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/closed-button-text'));
 
-  describe('Closed Button Text', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/closed-button-text'));
-
-    Terra.should.matchScreenshot('closed');
-    Terra.should.beAccessible();
-  });
-
-  describe('Opened Button Text', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/opened-button-text'));
-
-    it('should open the button', () => {
-      browser.click('button');
-
-      // Ensures the on hover button styling is not displayed
-      browser.click('p*=Lorem');
+      Terra.should.matchScreenshot('closed');
+      Terra.should.beAccessible();
     });
 
-    Terra.should.matchScreenshot('opened');
-    Terra.should.beAccessible();
-  });
+    describe('Opened Button Text', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/opened-button-text'));
 
-  describe('Initially open', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/initially-open'));
+      it('should open the button', () => {
+        browser.click('button');
 
-    Terra.should.matchScreenshot('opened');
-    Terra.should.beAccessible();
-  });
+        // Ensures the on hover button styling is not displayed
+        browser.click('p*=Lorem');
+      });
 
-  describe('Animated', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/animated'));
-
-    it('should open the button', () => {
-      browser.click('button');
-
-      // Ensures the on hover button styling is not displayed
-      browser.click('p*=Lorem');
-
-      // Let the animation complete
-      browser.pause(100);
+      Terra.should.matchScreenshot('opened');
+      Terra.should.beAccessible();
     });
 
-    Terra.should.matchScreenshot('opened');
-    Terra.should.beAccessible();
-  });
+    describe('Initially open', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/initially-open'));
 
-  describe('Icon Animated', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/icon-animated'));
-
-    it('should open the button', () => {
-      browser.click('button');
-
-      // Ensures the on hover button styling is not displayed
-      browser.click('p*=Lorem');
-
-      // Let the animation complete
-      browser.pause(100);
+      Terra.should.matchScreenshot('opened');
+      Terra.should.beAccessible();
     });
 
-    Terra.should.matchScreenshot('opened');
-    Terra.should.beAccessible();
-  });
+    describe('Animated', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/animated'));
 
-  describe('On Close Toggle Button', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/on-close-toggle-button'));
+      it('should open the button', () => {
+        browser.click('button');
 
-    it('should not increment', () => {
-      browser.click('button');
+        // Ensures the on hover button styling is not displayed
+        browser.click('p*=Lorem');
 
-      // Ensures the on hover button styling is not displayed
-      browser.click('div*=Times');
+        // Let the animation complete
+        browser.pause(100);
+      });
+
+      Terra.should.matchScreenshot('opened');
+      Terra.should.beAccessible();
     });
 
-    Terra.should.matchScreenshot('opened');
+    describe('Icon Animated', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/icon-animated'));
 
-    it('should increment', () => {
-      browser.click('button');
+      it('should open the button', () => {
+        browser.click('button');
 
-      // Ensures the on hover button styling is not displayed
-      browser.click('div*=Times');
+        // Ensures the on hover button styling is not displayed
+        browser.click('p*=Lorem');
+
+        // Let the animation complete
+        browser.pause(100);
+      });
+
+      Terra.should.matchScreenshot('opened');
+      Terra.should.beAccessible();
     });
 
-    Terra.should.matchScreenshot('closed');
-    Terra.should.beAccessible();
-  });
+    describe('On Close Toggle Button', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/on-close-toggle-button'));
 
-  describe('On Open Toggle Button', () => {
-    before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/on-open-toggle-button'));
+      it('should not increment', () => {
+        browser.click('button');
 
-    it('should increment', () => {
-      browser.click('button');
+        // Ensures the on hover button styling is not displayed
+        browser.click('div*=Times');
+      });
 
-      // Ensures the on hover button styling is not displayed
-      browser.click('div*=Times');
+      Terra.should.matchScreenshot('opened');
+
+      it('should increment', () => {
+        browser.click('button');
+
+        // Ensures the on hover button styling is not displayed
+        browser.click('div*=Times');
+      });
+
+      Terra.should.matchScreenshot('closed');
+      Terra.should.beAccessible();
     });
 
-    Terra.should.matchScreenshot('opened');
+    describe('On Open Toggle Button', () => {
+      before(() => browser.url('/#/raw/tests/terra-toggle-button/toggle-button/on-open-toggle-button'));
 
-    it('should not increment', () => {
-      browser.click('button');
+      it('should increment', () => {
+        browser.click('button');
 
-      // Ensures the on hover button styling is not displayed
-      browser.click('div*=Times');
+        // Ensures the on hover button styling is not displayed
+        browser.click('div*=Times');
+      });
+
+      Terra.should.matchScreenshot('opened');
+
+      it('should not increment', () => {
+        browser.click('button');
+
+        // Ensures the on hover button styling is not displayed
+        browser.click('div*=Times');
+      });
+
+      Terra.should.matchScreenshot('closed');
+      Terra.should.beAccessible();
     });
-
-    Terra.should.matchScreenshot('closed');
-    Terra.should.beAccessible();
   });
 });

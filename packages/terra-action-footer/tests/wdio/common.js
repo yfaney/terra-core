@@ -17,10 +17,7 @@ const withoutActionsThemeables = Object.assign({}, baseThemeables, {
   '--terra-action-footer-empty-height': '16px',
 });
 
-const viewports = Terra.viewports('small', 'medium');
-
 module.exports = {
-  viewports,
   withActionsThemeables,
   withoutActionsThemeables,
 };

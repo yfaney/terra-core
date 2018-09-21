@@ -1,5 +1,10 @@
-/* global before, browser, Terra */
-const viewports = Terra.viewports('tiny', 'medium', 'large');
+const formFactor = browser.options.formFactor;
+const viewports = formFactor ? Terra.viewports(formFactor) : Terra.viewports('tiny', 'medium', 'large');
+
+viewports.forEach((viewport) => {
+  describe('Tag', () => {
+    before(() => !formFactor ? browser.setViewportSize(viewport) : null);
+
 
 describe('Tag', () => {
   describe('Default', () => {
@@ -72,8 +77,8 @@ describe('Tag', () => {
   describe('Multiple Tags', () => {
     before(() => browser.url('/#/raw/tests/terra-tag/tag/multiple-tags'));
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
+    Terra.should.beAccessible();
+    Terra.should.matchScreenshot();
   });
 
   describe('OnClick Tag', () => {

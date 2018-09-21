@@ -1,24 +1,29 @@
-/* global browser, Terra */
 const {
-  viewports,
   withActionsThemeables,
   withoutActionsThemeables,
 } = require('./common');
 
-describe('BlockActionFooter', () => {
-  describe('No Actions', () => {
-    beforeEach(() => browser.url('/#/raw/tests/terra-action-footer/action-footer/without-actions-action-footer-container'));
+const formFactor = browser.options.formFactor;
+const viewports = formFactor ? Terra.viewports(formFactor) : Terra.viewports('small', 'medium');
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-    Terra.should.themeEachCustomProperty(withoutActionsThemeables);
-  });
+viewports.forEach((viewport) => {
+  describe('BlockActionFooter', () => {
+    before(() => !formFactor ? browser.setViewportSize(viewport) : null);
 
-  describe('With Actions', () => {
-    beforeEach(() => browser.url('/#/raw/tests/terra-action-footer/action-footer/with-actions-action-footer-container'));
+    describe('No Actions', () => {
+      beforeEach(() => browser.url('/#/raw/tests/terra-action-footer/action-footer/without-actions-action-footer-container'));
 
-    Terra.should.beAccessible({ viewports });
-    Terra.should.matchScreenshot({ viewports });
-    Terra.should.themeEachCustomProperty(withActionsThemeables);
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+      Terra.should.themeEachCustomProperty(withoutActionsThemeables);
+    });
+
+    describe('With Actions', () => {
+      beforeEach(() => browser.url('/#/raw/tests/terra-action-footer/action-footer/with-actions-action-footer-container'));
+
+      Terra.should.beAccessible();
+      Terra.should.matchScreenshot();
+      Terra.should.themeEachCustomProperty(withActionsThemeables);
+    });
   });
 });
