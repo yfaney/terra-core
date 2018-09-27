@@ -18,11 +18,18 @@ const permitParams = (locale, callback) => {
 module.exports = (locale, callback, scope) => {
   permitParams(locale, callback);
   if (!hasIntl) {
-    require.ensure([], (require) => {
-      require('intl');
-      loadIntl(locale);
-      loadTranslations(locale, callback, scope);
-    }, 'intl-polyfill');
+    // require.ensure([], (require) => {
+    //   require('intl');
+    //   loadIntl(locale);
+    //   loadTranslations(locale, callback, scope);
+    // }, 'intl-polyfill');
+
+    /* eslint-disable-next-line */
+    import(/* webpackChunkName: "intl'" */ 'intl')
+      .then((module) => {
+        loadIntl(locale);
+        loadTranslations(locale, callback, scope);
+      }).catch(error => 'An error occurred while loading intl polyfill and/or translations');
   } else {
     loadTranslations(locale, callback, scope);
   }
