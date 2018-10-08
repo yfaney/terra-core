@@ -1,0 +1,9 @@
+{
+  "Terra.alert.advisory": "Recommandation.",
+  "Terra.alert.alert": "Alerte.",
+  "Terra.alert.dismiss": "Ignorer",
+  "Terra.alert.error": "Erreur.",
+  "Terra.alert.info": "Information.",
+  "Terra.alert.success": "Opération réussie.",
+  "Terra.alert.warning": "Avertissement."
+}

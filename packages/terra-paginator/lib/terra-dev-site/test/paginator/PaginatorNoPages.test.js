@@ -1,0 +1,26 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Paginator = require('../../../Paginator');
+
+var _Paginator2 = _interopRequireDefault(_Paginator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PaginatorNoPagesExample = function PaginatorNoPagesExample() {
+  return (
+    // eslint-disable-next-line no-console
+    _react2.default.createElement(_Paginator2.default, { onPageChange: function onPageChange(i) {
+        return console.log(i);
+      } })
+  );
+};
+
+exports.default = PaginatorNoPagesExample;
