@@ -8,6 +8,16 @@ const LazyResult = require('postcss/lib/lazy-result');
 // This is magic.
 const importLazy = require('import-lazy')(require);
 
+/**
+ * The Upgrade Generator will compare a branch against master and diff all changes to
+ * custom properties between the two branches.
+ *
+ * To run this script:
+ * 1. Add it to the root directory of a monorepo.
+ * 2. Run the script from the command line and specify the branch name you want to diff against master.
+ *    node ./upgrade-guide-generator.js branch_name
+ *
+ */
 class UpgradeGenerator {
   /**
    * Checkouts the local target branch.
