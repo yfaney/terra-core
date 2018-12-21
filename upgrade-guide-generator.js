@@ -140,9 +140,9 @@ class UpgradeGenerator {
     }
 
     return {
-      added,
+      added: added.filter(variable => removed.indexOf(variable) === -1),
       changed,
-      removed,
+      removed: removed.filter(variable => added.indexOf(variable) === -1),
     };
   }
 
