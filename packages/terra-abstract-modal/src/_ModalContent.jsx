@@ -75,7 +75,6 @@ const defaultProps = {
   classNameModal: null,
   classNameOverlay: null,
   closeOnOutsideClick: true,
-  escapeDeactivates: false,
   fallbackFocus: undefined,
   isFocused: true,
   isFullscreen: false,
@@ -132,7 +131,7 @@ class ModalContent extends React.Component {
       <FocusTrap
         paused={!isFocused}
         focusTrapOptions={{
-          escapeDeactivates: this.escapeDeactivates,
+          escapeDeactivates,
           fallbackFocus: this.fallbackFocus,
         }}
       >

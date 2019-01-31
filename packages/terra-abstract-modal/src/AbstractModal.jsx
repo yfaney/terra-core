@@ -80,6 +80,7 @@ const defaultProps = {
   classNameOverlay: null,
   closeOnEsc: true,
   closeOnOutsideClick: true,
+  escapeDeactivates: false,
   isFocused: true,
   isFullscreen: false,
   role: 'dialog',
