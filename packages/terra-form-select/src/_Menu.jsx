@@ -134,17 +134,9 @@ class Menu extends React.Component {
     document.addEventListener('keydown', this.handleKeyDown);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    this.updateLiveRegion();
+  componentDidUpdate() {
+    this.updateNoResultsScreenReader();
     this.scrollIntoView();
-
-    if (prevState.active !== this.state.active) {
-      this.menu.setAttribute('aria-activedescendant', `terra-select-option-${this.state.active}`);
-
-      if (this.props.menuTriggerElement) {
-        this.props.menuTriggerElement.setAttribute('aria-activedescendant', `terra-select-option-${this.state.active}`);
-      }
-    }
   }
 
   componentWillUnmount() {
@@ -157,7 +149,15 @@ class Menu extends React.Component {
     }
   }
 
-  updateLiveRegion() {
+  isActiveSelected() {
+    if (Array.isArray(this.props.value)) {
+      return this.props.value.includes(this.state.active);
+    }
+
+    return this.state.active === this.props.value;
+  }
+
+  updateNoResultsScreenReader() {
     if (this.liveRegionTimeOut) {
       clearTimeout(this.liveRegionTimeOut);
     }
@@ -182,6 +182,27 @@ class Menu extends React.Component {
         visuallyHiddenComponent.current.innerText = '';
       }
     }, 500);
+  }
+
+  updateCurrentActiveScreenReader() {
+    this.menu.setAttribute('aria-activedescendant', `terra-select-option-${this.state.active}`);
+
+    if (this.props.menuTriggerElement) {
+      this.props.menuTriggerElement.setAttribute('aria-activedescendant', `terra-select-option-${this.state.active}`);
+    }
+
+    if (this.props.visuallyHiddenComponent) {
+      const element = Util.findByValue(this.props.children, this.state.active);
+
+      if (element) {
+        if (this.isActiveSelected()) {
+          const { intl } = this.context;
+          this.props.visuallyHiddenComponent.current.innerText = intl.formatMessage({ id: 'Terra.form.select.selected' }, { text: element.props.display });
+        } else {
+          this.props.visuallyHiddenComponent.current.innerText = element.props.display;
+        }
+      }
+    }
   }
 
   /**
@@ -241,10 +262,12 @@ class Menu extends React.Component {
       this.clearScrollTimeout();
       this.scrollTimeout = setTimeout(this.clearScrollTimeout, 500);
       this.setState({ active: Util.findPrevious(children, active) });
+      this.updateCurrentActiveScreenReader();
     } else if (keyCode === KeyCodes.DOWN_ARROW) {
       this.clearScrollTimeout();
       this.scrollTimeout = setTimeout(this.clearScrollTimeout, 500);
       this.setState({ active: Util.findNext(children, active) });
+      this.updateCurrentActiveScreenReader();
     } else if (keyCode === KeyCodes.ENTER && active !== null && (!Util.allowsMultipleSelections(variant) || !Util.includes(value, active))) {
       event.preventDefault();
       const option = Util.findByValue(children, active);
