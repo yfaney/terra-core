@@ -59,13 +59,16 @@ const Dropdown = ({
     event.preventDefault();
   };
 
+  console.log(isEnabled);
+
   const dropdownClasses = cx([
     'dropdown',
+    { 'is-visible': isEnabled },
     { 'is-above': isAbove },
     customProps.className,
   ]);
 
-  return (
+  /*
     <Hookshot
       isOpen
       isEnabled={isEnabled}
@@ -84,6 +87,29 @@ const Dropdown = ({
         {children}
       </Hookshot.Content>
     </Hookshot>
+  */
+
+  const borderTopWidth = window.getComputedStyle(target).getPropertyValue('border-top-width');
+  const borderRightWidth = window.getComputedStyle(target).getPropertyValue('border-right-width');
+  const borderBottomWidth = window.getComputedStyle(target).getPropertyValue('border-bottom-width');
+  const borderLeftWidth = window.getComputedStyle(target).getPropertyValue('border-left-width');
+
+  const dropdownStyles = {
+    left: borderLeftWidth === 0 ? borderLeftWidth : `-${borderLeftWidth}`,
+    right: borderRightWidth === 0 ? borderRightWidth : `-${borderRightWidth}`,
+  };
+
+  return (
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
+    <div
+      {...customProps}
+      className={dropdownClasses}
+      onMouseDown={preventDefault}
+      ref={(element) => { refCallback(element); }}
+      style={{ ...dropdownStyles, ...customProps.style }}
+    >
+      {children}
+    </div>
   );
 };
 
