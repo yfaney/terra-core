@@ -66,24 +66,29 @@ const Dropdown = ({
   ]);
 
   return (
-    <Hookshot
-      isOpen
-      isEnabled={isEnabled}
-      targetRef={() => target}
-      attachmentBehavior="none"
-      contentAttachment={isAbove ? AboveAttachment : BelowAttachment}
-      targetAttachment={isAbove ? BelowAttachment : AboveAttachment}
-    >
-      <Hookshot.Content
-        {...customProps}
-        className={dropdownClasses}
-        onResize={onResize}
-        onMouseDown={preventDefault}
-        refCallback={refCallback}
-      >
+    <React.Fragment>
+      <div className={cx('visually-hidden')}>
         {children}
-      </Hookshot.Content>
-    </Hookshot>
+      </div>
+      <Hookshot
+        isOpen
+        isEnabled={isEnabled}
+        targetRef={() => target}
+        attachmentBehavior="none"
+        contentAttachment={isAbove ? AboveAttachment : BelowAttachment}
+        targetAttachment={isAbove ? BelowAttachment : AboveAttachment}
+      >
+        <Hookshot.Content
+          {...customProps}
+          className={dropdownClasses}
+          onResize={onResize}
+          onMouseDown={preventDefault}
+          refCallback={refCallback}
+        >
+          {children}
+        </Hookshot.Content>
+      </Hookshot>
+    </React.Fragment>
   );
 };
 

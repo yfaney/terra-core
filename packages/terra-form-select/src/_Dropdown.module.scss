@@ -20,4 +20,16 @@
     border-top-right-radius: var(--terra-form-select-dropdown-border-top-right-radius, 3px);
     box-shadow: var(--terra-form-select-dropdown-above-box-shadow, 0 -3px 12px -5px rgba(0, 0, 0, 0.25));
   }
+
+  .visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap; /* Ensures words  are not read one at a time on screen readers*/
+    width: 1px;
+  }
 }
