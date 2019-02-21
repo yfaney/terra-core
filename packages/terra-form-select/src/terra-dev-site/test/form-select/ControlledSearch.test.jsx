@@ -16,7 +16,6 @@ class ControlledSearch extends React.Component {
   }
 
   handleSearchValueChange(value) {
-    debugger;
     const searchValue = event.target.value;
 
     if (['a', 'b', 'c', 'abc', '1', '2', '3'].includes(searchValue)) {

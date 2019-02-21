@@ -54,6 +54,10 @@ const propTypes = {
    */
   required: PropTypes.bool,
   /**
+   * Callback function triggered when a search value is entered.
+   */
+  shouldSearchValueChange: PropTypes.func,
+  /**
    * Specifies the type of input element to display.
    */
   type: PropTypes.string,
@@ -77,6 +81,7 @@ const defaultProps = {
   pattern: undefined,
   required: false,
   refCallback: undefined,
+  shouldSearchValueChange: undefined,
   type: undefined,
   value: undefined,
 };
@@ -94,6 +99,7 @@ class Input extends React.Component {
       pattern,
       refCallback,
       required,
+      shouldSearchValueChange,
       type,
       value,
       ...customProps
