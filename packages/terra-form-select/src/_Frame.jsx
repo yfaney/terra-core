@@ -52,6 +52,10 @@ const propTypes = {
    */
   onFocus: PropTypes.func,
   /**
+   * Callback function triggered when a key is pressed.
+   */
+  onShowSearchValue: PropTypes.func,
+  /**
    * Callback function triggered when the search criteria changes.
    */
   onSearch: PropTypes.func,
@@ -123,6 +127,7 @@ class Frame extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handlePaste = this.handlePaste.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleInputMouseDown = this.handleInputMouseDown.bind(this);
     this.visuallyHiddenComponent = React.createRef();
@@ -270,6 +275,11 @@ class Frame extends React.Component {
       BACKSPACE, SPACE, UP_ARROW, DOWN_ARROW,
     } = KeyCodes;
 
+    console.log("****KEYDOWN KEY = ", event.key);
+    if (this.props.onShowSearchValue) {
+      this.props.onShowSearchValue(event);
+    }
+
     if (keyCode === SPACE && target !== this.input) {
       event.preventDefault();
       this.openDropdown();
@@ -280,6 +290,19 @@ class Frame extends React.Component {
       this.props.onDeselect(value[value.length - 1]);
     } else if (keyCode === KeyCodes.ESCAPE) {
       this.closeDropdown();
+    }
+  }
+
+  handlePaste(event) {
+    const { value } = this.props;
+    const { keyCode, target } = event;
+    const {
+      BACKSPACE, SPACE, UP_ARROW, DOWN_ARROW,
+    } = KeyCodes;
+
+    console.log("****PASTE KEY = ", event.clipboardData.getData('Text'));
+    if (this.props.onShowSearchValue) {
+      this.props.onShowSearchValue(event);
     }
   }
 
@@ -366,6 +389,7 @@ class Frame extends React.Component {
       noResultContent,
       onDeselect,
       onSearch,
+      onShowSearchValue,
       onSelect,
       optionFilter,
       placeholder,
@@ -398,6 +422,7 @@ class Frame extends React.Component {
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}
         onKeyDown={this.handleKeyDown}
+        onPaste={this.handlePaste}
         onMouseDown={this.handleMouseDown}
         tabIndex={Util.tabIndex(this.props)}
         ref={(select) => { this.select = select; }}

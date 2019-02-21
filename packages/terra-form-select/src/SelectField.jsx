@@ -56,6 +56,10 @@ const propTypes = {
    */
   onChange: PropTypes.func,
   /**
+   * Callback function triggered when a key is pressed.
+   */
+  onKeyDown: PropTypes.func,
+  /**
    * Placeholder text.
    */
   placeholder: PropTypes.string,
@@ -125,6 +129,7 @@ const SelectField = ({
   labelAttrs,
   maxWidth,
   onChange,
+  onKeyDown,
   placeholder,
   required,
   selectAttrs,
@@ -155,6 +160,7 @@ const SelectField = ({
       isInvalid={isInvalid}
       defaultValue={defaultValue}
       onChange={onChange}
+      onKeyDown={onKeyDown}
       placeholder={placeholder}
       value={value}
       variant={variant}

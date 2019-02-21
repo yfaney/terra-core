@@ -59,6 +59,10 @@ const propTypes = {
    */
   onFocus: PropTypes.func,
   /**
+   * Callback function triggered when a search value is entered.
+   */
+  onShowSearchValue: PropTypes.func,
+  /**
    * Callback function triggered when the search criteria changes. function(searchValue)
    */
   onSearch: PropTypes.func,
@@ -197,7 +201,7 @@ class Select extends React.Component {
   render() {
     const { intl } = this.context;
     const {
-      children, defaultValue, onChange, placeholder, value, ...otherProps
+      children, defaultValue, onChange, onShowSearchValue, placeholder, value, ...otherProps
     } = this.props;
 
     const defaultPlaceholder = intl.formatMessage({ id: 'Terra.form.select.defaultDisplay' });
@@ -210,6 +214,7 @@ class Select extends React.Component {
         display={this.display()}
         onDeselect={this.handleDeselect}
         onSelect={this.handleSelect}
+        onShowSearchValue={onShowSearchValue}
         placeholder={selectPlaceholder}
         dropdown={dropdownProps => (
           <DropdownMenu intl={intl} {...dropdownProps}>
