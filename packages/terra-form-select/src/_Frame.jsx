@@ -68,6 +68,10 @@ const propTypes = {
    */
   placeholder: PropTypes.string,
   /**
+   * Indicates if the search value should change.
+   */
+  shouldSearchValueChange: PropTypes.func,
+  /**
    * The select value.
    */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]),
@@ -94,6 +98,7 @@ const defaultProps = {
   onSelect: undefined,
   optionFilter: undefined,
   placeholder: undefined,
+  shouldSearchValueChange: undefined,
   value: undefined,
   variant: Variants.DEFAULT,
 };
@@ -310,7 +315,14 @@ class Frame extends React.Component {
    * @param {event} event - The input change event.
    */
   handleSearch(event) {
+    debugger;
     const searchValue = event.target.value;
+
+    if (this.props.shouldSearchValueChange) {
+      if (!this.props.shouldSearchValueChange(event)) {
+        return;
+      }
+    }
 
     this.setState({
       isOpen: true,
@@ -369,6 +381,7 @@ class Frame extends React.Component {
       onSelect,
       optionFilter,
       placeholder,
+      shouldSearchValueChange,
       variant,
       value,
       ...customProps

@@ -7,10 +7,23 @@ class ControlledSearch extends React.Component {
 
     this.state = { value: [] };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSearchValueChange = this.handleSearchValueChange.bind(this);
   }
 
   handleChange(value) {
+    debugger;
     this.setState({ value });
+  }
+
+  handleSearchValueChange(value) {
+    debugger;
+    const searchValue = event.target.value;
+
+    if (['a', 'b', 'c', 'abc', '1', '2', '3'].includes(searchValue)) {
+      return false;
+    }
+
+    return true;
   }
 
   render() {
@@ -19,6 +32,7 @@ class ControlledSearch extends React.Component {
         id="search"
         onChange={this.handleChange}
         placeholder="Select a color"
+        shouldSearchValueChange={this.handleSearchValueChange}
         value={this.state.value}
         variant="search"
       >
