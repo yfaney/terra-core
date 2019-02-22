@@ -22,9 +22,15 @@ class ControlledSearch extends React.Component {
       searchValue = event.clipboardData.getData('Text');
     }
 
+    //Blacklist
     if (['a', 'b', 'c', 'abc', '1', '2', '3', '😃'].includes(searchValue)) {
       event.preventDefault();
     }
+
+    //Whitelist
+    // if (!['-', '.', 'Backspace', 'Meta', 'v', 'ArrowLeft', 'ArrowRight'].includes(searchValue) && !/^\d+$/.test(searchValue)) {
+    //   event.preventDefault();
+    // }
   }
 
   render() {
