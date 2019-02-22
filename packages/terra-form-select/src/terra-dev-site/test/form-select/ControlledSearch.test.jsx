@@ -22,7 +22,7 @@ class ControlledSearch extends React.Component {
       searchValue = event.clipboardData.getData('Text');
     }
 
-    if (['a', 'b', 'c', 'abc', '1', '2', '3'].includes(searchValue)) {
+    if (['a', 'b', 'c', 'abc', '1', '2', '3', '😃'].includes(searchValue)) {
       event.preventDefault();
     }
   }
