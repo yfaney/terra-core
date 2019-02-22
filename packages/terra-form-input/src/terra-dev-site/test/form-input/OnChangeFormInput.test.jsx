@@ -6,36 +6,27 @@ class OnChangeInput extends React.Component {
     constructor(props) {
       super(props);
   
-      this.state = { input: 'Default Input' };
+      this.state = { input: '', previousValue: '' };
       this.handleChangeFirst = this.handleChangeFirst.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.handleSearchValueChange = this.handleSearchValueChange.bind(this);
     }
 
     handleChangeFirst(event) {
-        debugger;
-        if (!this.handleSearchValueChange(event)) {
-            return;
-        }
+      if (!this.handleSearchValueChange(event)) {
+        return;
+      }
                 
-        this.handleChange(event);
+      this.handleChange(event);
     }
   
     handleChange(event) {
-        debugger;
-      this.setState({ input: event.target.value });
+      this.setState({ input: event.target.value, previousValue: event.target.value });
     }
 
     handleSearchValueChange(event) {
-        debugger;
-        const searchValue = event.target.value;
-    
-        if (['a', 'b', 'c', 'abc', '1', '2', '3'].includes(searchValue)) {
-          return false;
-        }
-    
-        return true;
-      }
+      return !/^\d+$/.test(event.target.value);
+    }
   
     render() {
       return (

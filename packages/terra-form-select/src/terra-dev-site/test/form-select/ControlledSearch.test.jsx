@@ -16,13 +16,9 @@ class ControlledSearch extends React.Component {
   }
 
   handleSearchValueChange(value) {
-    const searchValue = event.target.value;
+    // return !/^\d+$/.test(event.target.value);
 
-    if (['a', 'b', 'c', 'abc', '1', '2', '3'].includes(searchValue)) {
-      return false;
-    }
-
-    return true;
+    return !['a', 'b', 'c', 'abc', '1', '2', '3'].includes(event.target.value);
   }
 
   render() {
