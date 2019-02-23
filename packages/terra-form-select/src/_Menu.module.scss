@@ -5,4 +5,16 @@
     overflow: hidden;
     padding: var(--terra-form-select-menu-padding, 0 0 0.142857rem);
   }
+
+  .visually-hidden-component {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap; /* Ensures words  are not read one at a time on screen readers*/
+    width: 1px;
+  }
 }

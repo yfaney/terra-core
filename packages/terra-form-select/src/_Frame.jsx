@@ -8,7 +8,6 @@
  * Add VoiceOver desktop support
  * Code seems to work
  * When dropdown is open, it would be nice to focus to item that is selected
- * Add logic to switch between radio and checkbox
  * Look into radiogroup role, see if there is a checkboxgroup role too
  *
  * Add JAWS support
@@ -154,7 +153,7 @@ class Frame extends React.Component {
     this.handleInputFocus = this.handleInputFocus.bind(this);
     this.handleInputBlur = this.handleInputBlur.bind(this);
     this.visuallyHiddenComponent = React.createRef();
-    this.selectListBox = '#terra-select-menu [data-terra-select-option]:first-child';
+    this.selectListBox = '#terra-select-menu #focus-target';
   }
 
   componentDidUpdate(previousProps, previousState) {
@@ -522,10 +521,6 @@ class Frame extends React.Component {
           ref={(combobox) => { this.combobox = combobox; }}
         >
           <div role="textbox" aria-disabled={!!disabled} className={cx('display')}>
-            {/* Hidden attribute used to resolve VoiceOver on desktop from overly reading aria-describedby content */}
-            <span id={ariaDescribedById} hidden className={cx('visually-hidden-component')}>
-              Use up and down arrow keys to navigate through options. On a mobile device, swipe right to navigate options.
-            </span>
             {this.getDisplay()}
           </div>
         </div>

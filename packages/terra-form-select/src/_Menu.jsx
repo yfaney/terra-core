@@ -397,6 +397,22 @@ class Menu extends React.Component {
         aria-activedescendant={`terra-select-option-${this.state.active}`}
         tabIndex="0"
       >
+        {/*
+          This focusable div allows VoiceOver the ability to shift focus to the dropdown
+          It must contain text for VO to shift focus on iOS
+          On non-touch devices, the text is intended to avoid screen-readers reading the entire list of
+          options when focus is shifted to dropdown as this may be overwhelming.
+         */}
+        <div id="focus-target" className={cx('visually-hidden-component')} tabIndex="-1">
+          {'ontouchstart' in window
+            ? 'Swipe right to navigate options.'
+            : 'Use up and down arrow keys to navigate through options.'}
+          {/*
+          Use up and down arrow keys to navigate through options.
+            Adding this.clone(this.state.children[0]) allow VO on desktop to read first option when dropdown is opened
+            but breaks VO on iOS from shifting focus to this DIV.
+            */}
+        </div>
         {this.clone(this.state.children)}
       </div>
       /* eslint-enable jsx-a11y/no-noninteractive-tabindex */
