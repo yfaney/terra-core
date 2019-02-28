@@ -166,6 +166,7 @@ class Frame extends React.Component {
       'aria-owns': this.state.isOpen ? 'terra-select-menu' : undefined,
       'aria-label': 'search',
       'aria-disabled': disabled,
+      'role': 'combobox',
       className: cx('search-input', { 'is-hidden': Util.shouldHideSearch(this.props, this.state) }),
     };
 
@@ -397,12 +398,12 @@ class Frame extends React.Component {
     return (
       <div
         {...customProps}
-        role={!disabled ? 'combobox' : undefined}
+        role={!disabled && variant === Variants.DEFAULT? 'combobox' : undefined}
         aria-controls={!disabled && this.state.isOpen ? 'terra-select-menu' : undefined}
         aria-disabled={!!disabled}
         aria-expanded={!!disabled && !!this.state.isOpen}
         aria-haspopup={!disabled ? 'listbox' : undefined}
-        aria-owns={this.state.isOpen ? 'terra-select-menu' : undefined}
+        aria-owns={this.state.isOpen && Variants.DEFAULT ? 'terra-select-menu' : undefined}
         className={selectClasses}
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}

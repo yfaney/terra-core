@@ -116,10 +116,13 @@ class FrameUtil {
    * @return {string} - A tab index.
    */
   static tabIndex(props) {
-    if (props.variant === Variants.DEFAULT && !props.disabled) {
-      return '0';
+    if (props.disabled) {
+      return '-1';
+    } else if (props.variant === Variants.DEFAULT) {
+      return '0'
     }
-    return '-1';
+
+    return undefined;
   }
 }
 

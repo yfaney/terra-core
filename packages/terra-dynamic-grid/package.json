@@ -29,7 +29,8 @@
     "aphrodite": "^2.2.2",
     "classnames": "^2.2.5",
     "prop-types": "^15.5.8",
-    "terra-doc-template": "^2.4.0"
+    "terra-doc-template": "^2.4.0",
+    "terra-clinical-header": "3.2.0"
   },
   "scripts": {
     "compile": "npm run compile:clean && npm run compile:build",
