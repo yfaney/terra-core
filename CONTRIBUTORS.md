@@ -83,7 +83,6 @@ Cerner Corporation
 - Lauren Stephenson [@CompSciLauren]
 - Shetty Akarsh [@ShettyAkarsh]
 - Caleb Meyer [@calebmeyer]
-- Andrew Givens [@agivens96]
 
 
 
@@ -171,4 +170,3 @@ Cerner Corporation
 [@CompSciLauren]: https://github.com/CompSciLauren
 [@ShettyAkarsh]: https://github.com/ShettyAkarsh
 [@calebmeyer]: https://github.com/calebmeyer
-[@agivens96]: https://github.com/agivens96

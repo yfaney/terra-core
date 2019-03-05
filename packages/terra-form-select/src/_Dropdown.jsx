@@ -76,7 +76,6 @@ const Dropdown = ({
     >
       <Hookshot.Content
         {...customProps}
-        disableOnClickOutside
         className={dropdownClasses}
         onResize={onResize}
         onMouseDown={preventDefault}
